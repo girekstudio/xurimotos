@@ -1,0 +1,70 @@
+@font-face {
+    src: url('fonts/Graphik-Bold.otf');
+    font-family: 'graphik-bold';
+}
+
+.graphik-bold { font-family: 'graphik-bold'}
+
+@font-face {
+    src: url('fonts/Graphik-Medium.otf');
+    font-family: 'graphik-medium';
+}
+
+.graphik-medium { font-family: 'graphik-medium'}
+
+@font-face {
+    src: url('fonts/Graphik-SemiBold.otf');
+    font-family: 'graphik-semibold';
+}
+
+.graphik-semibold { font-family: 'graphik-semibold'}
+
+@font-face {
+    src: url('fonts/Graphik-Regular.otf');
+    font-family: 'graphik-regular';
+}
+
+.graphik-regular { font-family: 'graphik-regular'}
+
+
+@font-face {
+    src: url('fonts/Graphik-Light.otf');
+    font-family: 'graphik-light';
+}
+
+.graphik-light { font-family: 'graphik-light'}
+
+
+
+@font-face {
+    src: url('fonts/KoHo-Bold.ttf');
+    font-family: 'koho-bold';
+}
+
+.koho-bold { font-family: 'koho-bold'}
+
+@font-face {
+    src: url('fonts/KoHo-SemiBold.ttf');
+    font-family: 'koho-semibold';
+}
+
+.koho-semibold { font-family: 'koho-semibold'}
+
+@font-face {
+    src: url('fonts/KoHo-Regular.ttf');
+    font-family: 'koho-regular';
+}
+
+.koho-regular { font-family: 'koho-regular'}
+
+@font-face {
+    src: url('fonts/KoHo-Light.ttf');
+    font-family: 'koho-light';
+}
+
+.koho-light { font-family: 'koho-light'}
+
+
+
+
+

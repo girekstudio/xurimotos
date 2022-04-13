@@ -1,0 +1,225 @@
+{% extends 'new/index-corporate-7.html' %}
+{% block main %}
+    {% load render_paginator %}
+    <div style="background:url({{ request.session.imagen_principal }}) no-repeat center center fixed; height: 101px; background-size: cover;"></div>
+    <div role="main" class="main shop pt-4" >
+    <div class="container-lg">
+        <div class="row">
+                {% block parametros %}
+                    <div class="col-lg-2 order-1 order-lg-2">
+                        <aside class="sidebar">
+                            <div class="input-group mb-3 pb-1">
+                                <select name="modo" id="modo" onchange="url('modo',$(this).val())"
+                                        class="form-control text-1">
+                                    <option value="Tabla">Modo: Tabla</option>
+                                    <option value="Lista">Modo: Lista</option>
+                                </select>
+                                <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-columns m-2"></i>
+                                </button>
+                            </div>
+                            <form action="{{ request.get_full_path }}" method="get">
+                                <div class="input-group mb-3 pb-1">
+                                    <input class="form-control text-1" placeholder="Buscar..."
+                                           value="{{ request.GET.q }}"
+                                           name="q"
+                                           id="q" type="text">
+                                    <button type="submit" class="btn btn-dark text-1 p-2"><i
+                                            class="fas fa-search m-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="owl-carousel owl-theme nav-inside nav-style-1 nav-light"
+                                 data-plugin-options="{'items': 1, 'autoplay': true, 'autoplayTimeout': 5000, 'margin': 10, 'animateIn': 'slideInDown', 'animateOut': 'slideOutDown'}">
+
+                                {% for publi in xpub %}
+                                    <div class="img-thumbnail border-0 p-0 d-block">
+                                        <img class="img-fluid border-radius-0" src="/media/{{ publi.imagen }}" alt="">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="toggle toggle-minimal toggle-primary" data-plugin-toggle>
+                                <section class="toggle">
+                                    <a class="toggle-title">Categoría</a>
+                                    <div class="toggle-content">
+                                        <ul class="nav nav-list flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" style="cursor: pointer"
+                                                   href="/catalogo/">Todas las Categorías</a>
+                                            </li>
+                                            {% for categoria in categorias %}
+                                                {% if request.GET.cat == categoria.nombre %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" style="cursor: pointer"
+                                                           href="/catalogo/?cat={{ categoria.nombre }}">{{ categoria.nombre }}</a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" style="cursor: pointer"
+                                                           href="/catalogo/?cat={{ categoria.nombre }}">{{ categoria.nombre }}</a>
+                                                    </li>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </section>
+                            </div>
+
+                        </aside>
+                    </div>
+                {% endblock %}
+                {% block productos %}
+                    <div class="col-lg-10 order-2 order-lg-2">
+                        {% if productos.paginator.num_pages > 1 %}
+                            <div class="row">
+                                <div class="col">
+                                    <ul class="pagination float-right" style="overflow-x: auto">
+                                        {% if productos.has_previous %}
+                                            <li class="page-item"><a  class="page-link"
+                                                                     onclick="url('page',{{ productos.previous_page_number }})"
+                                                                     style="cursor: pointer"><i
+                                                    class="fas fa-angle-left"></i></a></li>
+                                        {% endif %}
+                                        {% muestra_paginacion productos.number productos.paginator.num_pages %}
+                                        {% if productos.has_next %}
+                                            <a class="page-link" onclick="url('page',{{ productos.next_page_number }})"
+                                               style="cursor: pointer"><i class="fas fa-angle-right"></i></a>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="masonry-loader masonry-loader-showing">
+                            <div class="row products product-thumb-info-list" data-plugin-masonry
+                                 data-plugin-options="{'layoutMode': 'fitRows'}">
+                                {% for producto in productos %}
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="product mb-0">
+                                            <div class="product-thumb-info border-0 mb-3" style="border-radius: 20px">
+                                                <div class="product-thumb-info-badges-wrapper">
+                                                    <span class="badge badge-ecommerce badge-success">{{ producto.categoria.nombre }}</span>
+                                                </div>
+
+                                                <div  class="addtocart-btn-wrapper ">
+                                                    <a  class="text-decoration-none addtocart-btn  "
+                                                       data-id="{{ producto.id }}"
+                                                       data-nombre="{{ producto.descripcion }}"
+                                                       data-foto="/media/{{ producto.foto }}"
+                                                       title="Agregar al Pedido" style="cursor: pointer">
+                                                        <i class="icons icon-bag"></i>
+                                                    </a>
+                                                </div>
+                                                <a  href="/product/?id={{ producto.id }}" style="text-decoration:none">
+                                                    <div  class="product-thumb-info-image">
+                                                        {% if producto.foto %}
+                                                            <img style="border-radius: 20px !important;"  alt="" class="img-fluid rounded-2"
+                                                                 src="/media/{{ producto.foto }}">
+                                                        {% else %}
+                                                            <img style="border-radius: 20px !important;"  alt="" class="img-fluid rounded-2 "
+                                                                 src="/static/Porto/img/products/product-grey-1.jpg">
+                                                        {% endif %}
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <a href="#"
+                                                       class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1"></a>
+                                                    <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+                                                        <a href="/product/?id={{ producto.id }}"
+                                                           class="text-color-dark text-color-hover-primary"
+                                                           style="text-decoration: none">{{ producto.descripcion|truncatechars:50 }}</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div title="Rated 5 out of 5">
+                                                <input type="text" class="d-none" value="5" title=""
+                                                       data-plugin-star-rating
+                                                       data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+                                            </div>
+                                            <p class="price text-5 mb-3">
+                                                <span class="sale text-color-dark font-weight-semi-bold"></span>
+                                                <span class="amount"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% if productos.paginator.num_pages > 1 %}
+                            <div class="row">
+                                <div class="col">
+                                    <ul class="pagination float-right" style="overflow-x: auto">
+                                        {% if productos.has_previous %}
+                                            <li class="page-item"><a class="page-link"
+                                                                     onclick="url('page',{{ productos.previous_page_number }})"
+                                                                     style="cursor: pointer">
+                                                <i class="fas fa-angle-left"></i></a>
+                                            </li>
+                                        {% endif %}
+                                        {% muestra_paginacion productos.number productos.paginator.num_pages %}
+                                        {% if productos.has_next %}
+                                            <a class="page-link" onclick="url('page',{{ productos.next_page_number }})"
+                                               style="cursor: pointer"><i class="fas fa-angle-right"></i></a>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                {% endblock %}
+            </div>
+    </div>
+
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        var QueryString = function () {
+            var query_string = {};
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (typeof query_string[pair[0]] === "undefined") {
+                    query_string[pair[0]] = decodeURIComponent(pair[1]);
+                } else if (typeof query_string[pair[0]] === "string") {
+                    var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+                    query_string[pair[0]] = arr;
+                } else {
+                    query_string[pair[0]].push(decodeURIComponent(pair[1]));
+                }
+            }
+            return query_string;
+        }();
+
+        function url(nombre, valor) {
+            let uri = `${nombre}=${valor}`
+            for (const property in QueryString) {
+                if (property == nombre) {
+                    console.log("existe")
+                } else {
+                    if (QueryString[property] != "") {
+                        uri += `&${property}=${QueryString[property]}`
+                    }
+                }
+                console.log(uri)
+            }
+            location.href = "?" + uri
+        }
+        {% if request.GET.color %}
+            $("#color option[value=" + QueryString.color + "]").attr("selected", true);
+        {% endif %}
+        {% if request.GET.edades %}
+            $("#edades option[value=" + QueryString.edades + "]").attr("selected", true);
+        {% endif %}
+        {% if request.GET.ppagina %}
+            $("#ppagina option[value=" + QueryString.ppagina + "]").attr("selected", true);
+        {% endif %}
+        {% if request.GET.marca %}
+            $("#marca option[value=" + QueryString.marca + "]").attr("selected", true);
+        {% endif %}
+    </script>
+{% endblock %}
+

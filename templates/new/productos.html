@@ -1,0 +1,748 @@
+{% extends 'new/index-corporate-7.html' %}
+{% block main %}
+    {% load render_paginator %}
+    <div role="main">
+        <section class="page-header page-header-modern bg-color-dark page-header-md"
+                 style="margin-bottom:-20px!important; background-image: url(/media/{{ editable.slider_1_fondo }});  background-size:1939px!important;  background-position:top !important; !important;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <br><br><br><br>
+                        <h4 class="koho-semibold text-color-primary font-weight-normal text-6"
+                            style="letter-spacing: 7px">PRODUCTOS</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="padding-top: -50px !important;">
+
+            <form role="search" action="/catalogo/" method="get">
+                <div class="input-group mb-3 pb-1">
+                    <input class=" graphik-regular form-control text-1" id="headerSearch" name="q" type="search"
+                           value="{{ request.GET.q }}"
+                           placeholder="¿Qué necesitas?">
+                    <button type="submit" class="btn btn-primary text-1 p-2">
+                        <i class="fas fa-search m-2" style="color: #efefef"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="  col-md-12  col-lg-12 list list-unstyled list-inline d-flex align-items-center justify-content-center flex-column flex-lg-row mb-3 pb-1"
+             style="margin: 10px!important;">
+
+            <nav class="">
+
+                <ul class="koho-semibold nav nav-pills" id="mainNav">
+
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_02 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_02 }}">
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_02 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_03 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_03 }}">
+                                <button type=" koho-semibold button"
+                                        class=" koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_03 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="graphik-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_04 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_04 }}">
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_04 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_05 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_05 }}">
+                                <button type=" koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_05 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_06 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_06 }}">
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_06 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_07 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_07 }}">
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_07 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_08 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_08 }}">
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_08 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_09 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_09 }}">
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_09 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="koho-semibold d-none  d-sm-none  d-md-block">
+                        {% if destacado.dest_titulo_10 %}
+                            <a href="/catalogo/?q={{ destacado.dest_titulo_10 }}">
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ destacado.dest_titulo_10 }}</button>&nbsp;</a>
+
+                        {% else %}
+                        {% endif %}
+                    </li>
+                    <li class="koho-semibold">
+                        <a href="/catalogo/">
+                            <button type="koho-semibold button"
+                                    class="koho-semibold btn btn-outline btn-quaternary mb-2">Todos los productos
+                            </button>&nbsp;</a>
+
+                    </li>
+                </ul>
+            </nav>
+
+
+        </div>
+
+        <section class="section section-no-border   m-0" style="background-color:#F6F6F6 ">
+            <div class="container">
+                <div class="row align-items-center pt-4 ">
+                    <div class="col-md-3 mb-3 mb-md-0  text-center y text-md-left">
+                        <h2 class="graphik-bold text-color-black line-height-1 font-weight-bold text-9 mb-0 "
+                            style="margin-top: -10px">PRODUCTOS NUEVOS </h2>
+                        <br>
+                        <p class="graphik-regular   "
+                           style="color: #1C1C1C!important; line-height: 20px ;letter-spacing: 0.1px!important">Catálogo
+                            XURI 2022 contiene la ficha detallada
+                            sobre lo que
+                            puedes necesitar.</p>
+                        <a href="/contacto/">
+                            <button type="button" class=" graphik-bold btn btn-warning  text-color-quaternary mb-2">
+                                <strong>SOLICITAR
+                                    CATÁLOGO</strong></button>
+                        </a>
+                    </div>
+
+
+                    <!-- Vista nuevos product pc -->
+                    <div class="d-none d-sm-block col-md-8 pl-md-5  align-items-center justify-content-center">
+                        <div class="products row">
+                            <div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
+                                 data-plugin-options="{'loop': true, 'autoplay': true, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+                                {% for producto in catalogo %}
+                                    <button type="button"
+                                            class="btn btn-light mb-2 align-items-center justify-content-center ">
+
+                                        <div class="product mb-0 " style="margin: 5px !important; border: #0a0a1a">
+                                            <div class="product border-0 mb-3"
+                                                 style="border-radius: 20px">
+                                                <div class="product " style="align-content: start; text-align: start">
+                                                    <span class="badge badge-ecommerce bg-color-primary">NUEVO</span>
+                                                </div>
+                                                <a href="/product/?id={{ producto.id }}">
+                                                    <div class="product-thumb-info-image">
+                                                        {% if not producto.foto %}
+                                                            <div>
+                                                                <img alt="" class="img-fluid"
+                                                                     src="/static/img/xuri.jpg">
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="cur-pointer">
+                                                                <img alt="" class="img-fluid"
+                                                                     src="/media/{{ producto.foto }}" height="200px">
+                                                            </div>
+                                                        {% endif %}
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <a href="/product/?id={{ producto.id }}"
+                                                       class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">
+                                                        <h2 class=" graphik-medium text-5 text-left font-weight-medium font-alternative text-transform-none line-height-3 mb-0"
+                                                            title="{{ producto.descripcion }} ">
+                                                            {{ producto.descripcion |truncatechars:16 }}
+                                                        </h2>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vista fin nuevos product  pc -->
+
+                    <!-- Vista nuevos product mobil -->
+                    <div class="d-block d-sm-none col-md-8 pl-md-5  align-items-center justify-content-center">
+                        <div class="products row">
+                            <div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
+                                 data-plugin-options="{'loop': true, 'autoplay': true, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+                                {% for producto in catalogo %}
+                                    <button type="button"
+                                            class="btn btn-light mb-2 align-items-center justify-content-center ">
+
+                                        <div class="product mb-0 " style="margin: 5px !important; border: #0a0a1a">
+                                            <div class="product border-0 mb-3"
+                                                 style="border-radius: 20px">
+                                                <div class="product " style="align-content: start; text-align: start">
+                                                    <span class="badge badge-ecommerce bg-color-primary">NUEVO</span>
+                                                </div>
+                                                <a href="/product/?id={{ producto.id }}">
+                                                    <div class="product-thumb-info-image">
+                                                        {% if not producto.foto %}
+                                                            <div>
+                                                                <img alt="" class="img-fluid"
+                                                                     src="/static/img/xuri.jpg">
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="cur-pointer">
+                                                                <img alt="" class="img-fluid"
+                                                                     src="/media/{{ producto.foto }}" height="200px">
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <a href="/product/?id={{ producto.id }}"
+                                                       class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">
+                                                        <h2 class=" graphik-medium text-5 text-left font-weight-medium font-alternative text-transform-none line-height-3 mb-0"
+                                                            title="{{ producto.descripcion }} ">
+                                                            {{ producto.descripcion }}
+                                                        </h2>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vista fin nuevos product  mobil -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-no-border   m-0" style="background-color:#ffffff!important; ">
+            <div class="container py-5 my-5">
+                <div class="row align-items-start text-start ">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10" style="margin-bottom: 20px!important;">
+                        <img alt="" class="img-fluid" src="/media/{{ editable.banner_img }}"
+                             style="border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 align-items-center justify-content-center "
+                         style=" background-color:#F6F6F6!important; border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
+                        <br>
+                        <p class="koho-light text-sm-2" style="margin: 0px !important; text-align: center; ">
+                            EXPLORAR
+                            MÁS</p>
+                        <h2 class="graphik-medium font-weight-bold text-5 mb-0 "
+                            style="text-align: center; margin-top: -10px">{{ producto_carrusel.titulo }}</h2>
+
+                        <div class="owl-item  row d-flex align-items-center justify-content-center ">
+
+
+                            <div class=" col-12 thumb-gallery owl-theme d-flex align-items-center justify-content-center"
+                                 data-plugin-options='{"items": 1, "margin": 5}'>
+                                <div class="thumb-gallery-detail  ">
+                                    <img id="vista_previa" alt="" class="img-fluid"
+                                         src="/media/{{ producto_carrusel.imagen_1 }}">
+                                </div>
+                            </div>
+
+                            {% if producto_carrusel.imagen_1 %}
+                                <div class="col-3 d-flex align-items-center justify-content-center ">
+                                    <div class="thumb-gallery-thumbs ">
+                                        <a class="data"
+                                           data-url="/media/{{ producto_carrusel.imagen_1 }}">
+                                            <div class="img-responsive rounded-circle border-all"
+                                                 src=""
+                                                 style="background-color: {{ producto_carrusel.codigo_color_imag_1 }} ; width: 25px;height: 25px">
+                                                <p>&nbsp;</p>
+                                            </div>
+
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if producto_carrusel.imagen_2 %}
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="thumb-gallery-thumbs">
+                                        <a class="data"
+                                           data-url="/media/{{ producto_carrusel.imagen_2 }}">
+                                            <div class="img-responsive rounded-circle border-all"
+                                                 src=""
+                                                 style="background-color: {{ producto_carrusel.codigo_color_imag_2 }} ; width: 25px;height: 25px">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if producto_carrusel.imagen_3 %}
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="thumb-gallery-thumbs">
+                                        <a class="data"
+                                           data-url="/media/{{ producto_carrusel.imagen_3 }}">
+                                            <div class="img-responsive rounded-circle border-all"
+                                                 src=""
+                                                 style="background-color: {{ producto_carrusel.codigo_color_imag_3 }} ; width: 25px;height: 25px">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if producto_carrusel.imagen_4 %}
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="thumb-gallery-thumbs">
+                                        <a class="data"
+                                           data-url="/media/{{ producto_carrusel.imagen_4 }}">
+                                            <div class="img-responsive rounded-circle border-all"
+                                                 src=""
+                                                 style="background-color: {{ producto_carrusel.codigo_color_imag_4 }} ; width: 25px;height: 25px">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if producto_carrusel.imagen_5 %}
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="thumb-gallery-thumbs">
+                                        <a class="data"
+                                           data-url="/media/{{ producto_carrusel.imagen_5 }}">
+                                            <div class="img-responsive rounded-circle border-all"
+                                                 src=""
+                                                 style="background-color: {{ producto_carrusel.codigo_color_imag_5 }} ; width: 25px;height: 25px">
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    <br>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Vista   pc  comprar por categoria -->
+    <div class="container d-none d-sm-none d-md-block">
+        <section class="section" style="padding: 0px !important; border-top:0px !important;">
+
+            <div class="row ">
+                <div class="col-6 col-md-4  py-5"
+                     style="background-color: #ffffff;vertical-align:text-top!important;">
+                    <div class="row text-center y text-md-left " style="margin: 10px">
+                        <a href="/catalogo/" class="text-decoration-none">
+                            <div class="icon-box">
+                                <h3 class=" koho-semibold top line-height-1 text-4 text-color-primary mb-0"
+                                    style="margin-bottom: 10px!important; vert-align: top!important; letter-spacing: 4px">
+                                    COMPRA POR
+                                    CATEGORÍAS</h3>
+                                <h3 class="graphik-bold text-8  text-color-black mb-0 "
+                                    style="line-height: 120%;letter-spacing: 2px"><strong> DESTACADAS DEL
+                                    MES</strong></h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4  graphik-bold text-center d-flex align-items-center justify-content-center py-4 "
+                     style="background-color: #FECF37; border-top-left-radius:10px 10px!important">
+                    <a href="/catalogo/?q={{ destacado.dest_link_02 }}" class="text-decoration-none">
+                        <section class="graphik-bold call-to-action  ">
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_02 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #FECF37 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_02 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 text-center d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #F6F6F6; border-top-right-radius:10px 10px!important">
+                    <a href="/catalogo/?q={{ destacado.dest_link_03 }}" class="text-decoration-none">
+                        <section class="graphik-bold call-to-action  ">
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_03 }} </strong></p>
+                            </div>
+                            <div class="graphik-bold col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #F6F6F6 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_03 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+
+                        </span>
+                    </a>
+                </div>
+                <div class="  col-6 col-md-4 text-center d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #FECF37 ; border-bottom-left-radius:10px 10px!important; border-top-left-radius:10px 10px!important">
+                    <a href="/catalogo/?q={{ destacado.dest_link_04 }}" class="text-decoration-none">
+                        <section class="graphik-bold call-to-action">
+                            <div class="graphik-bold col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_04 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #FECF37 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_04 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+
+                        </span>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-4 text-center graphik-bold d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #F6F6F6">
+                    <a href="/catalogo/?q={{ destacado.dest_link_05 }}" class="text-decoration-none">
+                        <section class="graphik-bold call-to-action  ">
+                            <div class="graphik-bold col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class=" graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_05 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #F6F6F6 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_05 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+
+                        </span>
+                    </a>
+                </div>
+
+                <div class="col-6 col-md-4 text-left d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #FECF37; border-bottom-right-radius:10px 10px!important;">
+                    <a href="/catalogo/?q={{ destacado.dest_link_06 }}" class="text-decoration-none">
+                        <section class="graphik-bold call-to-action  ">
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold  text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_06 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #FECF37 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_06 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Vista  fin  pc  comprar por categoria -->
+
+    <!-- Vista   movil  comprar por categoria -->
+    <div class="d-block d-sm-none d-sm-block d-md-none  d-lg-none  d-xl-none    py-5 text-center d-flex align-items-center justify-content-center"
+         style="background-color: #ffffff;vertical-align:text-top!important;">
+        <div class="row text-center d-flex align-items-center justify-content-center ">
+            <a href="/catalogo/" class="text-decoration-none">
+                <div class="icon-box">
+                    <h2 class=" koho-semibold top line-height-1 text-5 text-color-primary mb-0"
+                        style="margin-bottom: 10px!important; vert-align: top!important; letter-spacing: 4px">COMPRA POR
+                        CATEGORÍAS</h2>
+                    <h4 class="graphik-bold text-8  text-color-black mb-0 "
+                        style="line-height: 120%;letter-spacing: 2px"><strong> DESTACADAS DEL
+                        MES</strong></h4>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class=" graphik-bold d-block d-sm-none d-sm-block d-md-none  d-lg-none  d-xl-none col-md-12 pl-md-5  align-items-center justify-content-center">
+        <div class=" graphik-bold products row">
+            <div class=" graphik-bold owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
+                 data-plugin-options="{'loop': true, 'autoplay': false, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}"
+                 style=" margin: 10px!important;">
+
+
+                <div class="col-12 col-sm-12  graphik-bold text-center d-flex align-items-center justify-content-center py-4 "
+                     style="background-color: #FECF37; border-radius:10px 10px!important; ">
+                    <a href="/catalogo/?q={{ destacado.dest_link_02 }}" class="text-decoration-none">
+                        <section class="call-to-action  " style="padding: 5px!important;">
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_02 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #FECF37 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_02 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-12 graphik-bold text-center d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #F6F6F6;  border-radius:10px 10px!important">
+                    <a href="/catalogo/?q={{ destacado.dest_link_03 }}" class="text-decoration-none">
+                        <section class="call-to-action  ">
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_03 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #F6F6F6 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_03 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class=" col-12 col-sm-12 graphik-bold text-center d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #FECF37 ;  border-radius:10px 10px!important">
+                    <a href="/catalogo/?q={{ destacado.dest_link_04 }}" class="text-decoration-none">
+                        <section class="call-to-action">
+                            <div class=" graphik-bold col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_04 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #FECF37 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_04 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="col-12 col-sm-12  graphik-bold text-center d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #F6F6F6; border-radius:10px 10px!important">
+                    <a href="/catalogo/?q={{ destacado.dest_link_05 }}" class="text-decoration-none">
+                        <section class="call-to-action  ">
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_05 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #F6F6F6 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_02 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="col-12 col-sm-12 graphik-bold text-left d-flex align-items-center justify-content-center py-4"
+                     style="background-color: #FECF37;  border-radius:10px 10px!important">
+                    <a href="/catalogo/?q={{ destacado.dest_link_06 }}" class="text-decoration-none">
+                        <section class="call-to-action  ">
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <p class="graphik-bold  text-6 mb-0 text-color-black"
+                                   style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_06 }} </strong></p>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
+                                 style="padding: 0px!important; margin: 0px !important;">
+                                <i class=" icon-box  icons    icon-arrow-right text-5  text-color-quaternary"></i>
+                            </div>
+                        </section>
+                        <span class="thumb-info thumb-info-hide-wrapper-bg"
+                              style="background-color: #FECF37 !important;">
+                            <span class="thumb-info-wrapper">
+                                <img src="/media/{{ destacado.dest_imagen_06 }} " class="img-fluid"
+                                     alt="">
+
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Vista  fin  movil  comprar por categoria -->
+
+
+{% endblock %}
+{% block script %}
+    <script>
+        var QueryString = function () {
+            var query_string = {};
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (typeof query_string[pair[0]] === "undefined") {
+                    query_string[pair[0]] = decodeURIComponent(pair[1]);
+                } else if (typeof query_string[pair[0]] === "string") {
+                    var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+                    query_string[pair[0]] = arr;
+                } else {
+                    query_string[pair[0]].push(decodeURIComponent(pair[1]));
+                }
+            }
+            return query_string;
+        }();
+
+        function url(nombre, valor) {
+            let uri = `${nombre}=${valor}`
+            for (const property in QueryString) {
+                if (property == nombre) {
+                    console.log("existe")
+                } else {
+                    if (QueryString[property] != "") {
+                        uri += `&${property}=${QueryString[property]}`
+                    }
+                }
+                console.log(uri)
+            }
+            location.href = "?" + uri
+        }
+        {% if request.GET.color %}
+            $("#color option[value=" + QueryString.color + "]").attr("selected", true);
+        {% endif %}
+        {% if request.GET.edades %}
+            $("#edades option[value=" + QueryString.edades + "]").attr("selected", true);
+        {% endif %}
+        {% if request.GET.ppagina %}
+            $("#ppagina option[value=" + QueryString.ppagina + "]").attr("selected", true);
+        {% endif %}
+        {% if request.GET.marca %}
+            $("#marca option[value=" + QueryString.marca + "]").attr("selected", true);
+        {% endif %}
+    </script>
+
+    <script>
+        $(document).on('click', '.data', function () {
+
+            {#    img='<img alt="" width="300" height=""   src="'+url+'" class="img-responsive">'#}
+            $('#vista_previa').attr('src', $(this).data('url'));
+            console.log($(this).data('url'))
+        });
+
+    </script>
+
+{% endblock %}

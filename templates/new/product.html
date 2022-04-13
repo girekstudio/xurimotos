@@ -1,0 +1,286 @@
+{% extends 'new/index-corporate-7.html' %}
+{% load static %}
+{% block main %}
+    <div role="main">
+        <section class="page-header page-header-modern bg-color-dark page-header-md"
+                 style="margin-bottom:-20px!important; background-image: url(/media/{{ editable.slider_1_fondo }});  background-size:1939px!important;  background-position:top !important; !important;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <br><br><br><br>
+                        <h4 class=" koho-semibold text-color-primary font-weight-normal text-6"
+                            style="letter-spacing: 7px">PRODUCTOS</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <div class="row" style="margin-top: 50px">
+                <div class="col graphik-regular">
+                    <ul class="breadcrumb text-color-black breadcrumb-style-2 d-block text-4 mb-4">
+                        <li><a href="/productos/"
+                               class="text-color-black text-color-hover-primary text-decoration-none">Productos</a>
+                        </li>
+                        <li><a
+                                class="text-color-black text-color-hover-primary text-decoration-none">{{ producto.categoria.nombre }}</a>
+                        </li>
+                        <li>{{ producto.descripcion }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="thumb-gallery-wrapper" >
+                            <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3"  style="height: 75%!important;" >
+                                {% if not producto.foto %}
+                                    <div >
+                                        <img alt="" class="img-fluid" src="/media/xuri.jpg" >
+                                    </div>
+                                {% else %}
+                                    <div>
+                                        <img alt="" class="img-fluid" src="/media/{{ producto.foto }} " style="height: 75%!important;background-color: #ffffff !important;"
+                                             data-zoom-image="/media/{{ producto.foto }}" >
+                                    </div>
+                                    {% for imagen in producto.galeria_set.all %}
+                                        <div>
+                                            <img alt="" class="img-fluid" src="/media/{{ imagen.imagen }}" style="height: 75%!important; background-color: #ffffff !important;"
+                                                 data-zoom-image="/media/{{ imagen.imagen }}"  >
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="thumb-gallery-thumbs owl-carousel  owl-theme manual thumb-gallery-thumbs "  >
+                                {% if not producto.foto %}
+                                    <div>
+                                        <img alt="" class="img-fluid" src="/media/xuri.jpg" style="background-color: #ffffff">
+                                    </div>
+                                {% else %}
+                                    <div class="cur-pointer">
+                                        <img alt="" class="img-fluid" src="/media/{{ producto.foto }}" style="background-color: #ffffff" >
+                                    </div>
+                                    {% for imagen in producto.galeria_set.all %}
+                                        <div class="cur-pointer">
+                                            <img alt="" class="img-fluid" src="/media/{{ imagen.imagen }}" style="background-color: #ffffff">
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {#                    <div class="col-md-1 d-none  d-sm-none  d-md-block" style="margin: 10px" align="center">#}
+                    {#                        <div class="thumb-gallery-thumbs ">#}
+                    {#                            <a href="#" class="data" data-url="/media/{{ producto.foto }}">#}
+                    {#                                <img alt="" width="50" height="50" class="img-responsive"#}
+                    {#                                     src="/media/{{ producto.foto }}">#}
+                    {#                            </a>#}
+                    {##}
+                    {#                        </div>#}
+                    {#                        <br>#}
+                    {##}
+                    {##}
+                    {#                        {% for imagen in producto.galeria_set.all %}#}
+                    {#                            <div class="thumb-gallery-thumbs">#}
+                    {#                                <a href="#" class="data" data-url="/media/{{ imagen.imagen }}">#}
+                    {#                                    <img alt="" width="50" height="50" class="img-responsive"#}
+                    {#                                         src="/media/{{ imagen.imagen }}">#}
+                    {#                                </a>#}
+                    {##}
+                    {#                            </div>#}
+                    {#                            <br>#}
+                    {##}
+                    {#                        {% endfor %}#}
+                    {#                    </div>#}
+                    {##}
+                    {##}
+                    {#                    <div class="col-md-4">#}
+                    {#                        <div class="thumb-gallery owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>#}
+                    {#                            <div class="thumb-gallery-detail mb-3">#}
+                    {#                                <div>#}
+                    {#                                                        {% if not producto.foto %}#}
+                    {#                                                            <div>#}
+                    {#                                                                <img alt="" class="img-fluid" src="/media/xuri.jpg">#}
+                    {#                                                            </div>#}
+                    {#                                                        {% else %}#}
+                    {##}
+                    {#                                                            <img id="vista_previa" alt="" class="img-fluid" src="/media/{{ producto.foto }}"#}
+                    {#                                                                 data-zoom-image="/media/{{ producto.foto }}">#}
+                    {#                                                        {% endif %}#}
+                    {##}
+                    {#                                </div>#}
+                    {##}
+                    {#                            </div>#}
+                    {##}
+                    {#                        </div>#}
+                    {##}
+                    {##}
+                    {#                    </div>#}
+
+                    <div class="col-md-6">
+                        <div class="summary entry-summary position-relative">
+                            <div class="product-thumb-info-badges-wrapper  ">
+                                <div class="d-flex align-items-center">
+                                    <h1 class="mb-0 font-weight-bold text-7"><span
+                                            class=" koho-bold  badge badge-ecommerce bg-color-primary text-color-black mr-2 line-height-1 align-middle ">NUEVO</span>{{ producto.descripcion }}
+                                    </h1>
+                                </div>
+                                <br>
+                                <p class="graphik-medium" style=" color: #1C1C1C!important;"><strong>Sobre este
+                                    producto</strong></p>
+                                <p class="graphik-regular  mb-3 "
+                                   style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important;">{{ producto.descripcion }}</p>
+                                <div class="toggle toggle-minimal toggle-primary" data-plugin-toggle>
+                                    <section class="toggle ">
+                                        <a class=" graphik-medium text-color-black  toggle-title">Información
+                                            técnica</a>
+                                        <div class="toggle-content">
+                                            {% if producto.info_tecnica %}
+                                                <p class="graphik-regular"
+                                                   style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important;">{{ producto.info_tecnica }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </section>
+                                </div>
+                                <a href="https://api.whatsapp.com/send?phone=593{{ marca_xurimotos.celular_ventas_1 }}&text=Hola%20me%20interesa%20este%20producto https://www.xurimotos.com/product/?id={{ producto.id }} "
+                                   target="_blank" rel="noopener"
+                                   class="graphik-medium btn btn btn-outline btn-warning text-uppercase  mt-3"
+                                   style="color: #0a0a1a">Solicitar Información</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <br><br>
+                    <h4 class="graphik-bold font-weight-semibold text-4 mb-3">Productos relacionados</h4>
+                    <hr class="mt-0">
+                    <div class="products row">
+                        <div class="col">
+                            <div class="graphik-medium owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
+                                 data-plugin-options="{'loop': false, 'autoplay': true, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+                                {% for relacionado in relacionados %}
+                                    <div class="product mb-0 btn btn-light">
+                                        <div class="product-thumb-info border-0 mb-3" style="border-radius: 20px">
+                                            <div class="product-thumb-info-badges-wrapper">
+                                                <span class="badge badge-ecommerce bg-color-primary text-color-black ">NUEVO</span>
+                                            </div>
+                                            <a href="/product/?id={{ relacionado.id }}">
+                                                <div class="product-thumb-info-image" style="background:#ffffff !important;">
+                                                    {% if relacionado.foto %}
+                                                        <img alt="" class="img-fluid"
+                                                             src="/media/{{ relacionado.foto }}">
+                                                    {% else %}
+                                                        <img alt="" class="img-fluid"
+                                                             src="/static/img/products/xuri.jpg">
+                                                    {% endif %}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <a href="#"
+                                                   class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">electronics</a>
+                                                <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
+                                                    <a href="/product/?id={{ relacionado.id }}"
+                                                       class="text-color-dark text-color-hover-primary">{{ relacionado.descripcion }}</a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div title="Rated 5 out of 5">
+                                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating
+                                                   data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
+                                        </div>
+                                        <p class="price text-5 mb-3">
+                                            <span class="sale text-color-dark font-weight-semi-bold"></span>
+                                            <span class="amount"></span>
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block script %}
+    <script src="{% static '/vendor/bootstrap-star-rating/js/star-rating.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js' %}"></script>
+    <script src="{% static 'js/views/view.shop.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/theme.init.js' %}"></script>
+    <script src="{% static 'js/examples/examples.gallery.js' %}"></script>
+    <script src="{% static 'vendor/jquery.countdown/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'vendor/elevatezoom/jquery.elevatezoom.min.js' %}"></script>
+    <script>
+        $(".plus").click(function () {
+            let valor = parseInt($("#quantity").val())
+            valor += 1
+            $("#quantity").val(valor)
+        });
+
+        $(".minus").click(function () {
+            let valor = parseInt($("#quantity").val())
+            if (valor > 1) {
+                valor -= 1
+            }
+            $("#quantity").val(valor)
+
+        });
+        let ids = []
+        {% for i in relacionados %}
+            ids.push({{i.id}})
+        {% endfor %}
+        console.log(ids)
+
+        function siguienteAnterior(ids, idac) {
+            let ok = false
+            for (let id = 0; id < ids.length; id++) {
+                if (ids[id] == idac) {
+                    ok = true
+                }
+            }
+            if (ok) {
+                return "/product/?id=" + idac
+            } else {
+                return "/product/?id=" + ids[0]
+            }
+        }
+
+
+        $(".prev").click(function () {
+            let uri = siguienteAnterior(ids, {{ request.GET.id }}-1)
+            console.log(uri)
+            $(this).attr('href', uri)
+        })
+        $(".next").click(function () {
+            let uri = siguienteAnterior(ids, {{ request.GET.id }}+1)
+            $(this).attr('href', uri)
+        })
+    </script>
+
+    <script>
+        $(".ximagen").click(function () {
+            console.log($(this).data('imagen'))
+            $("#imagen-modal").attr('src', $(this).data('imagen'))
+            $("#defaultModal").modal('show')
+        })
+    </script>
+
+    <script>
+        $('.data').click(function () {
+
+            {#    img='<img alt="" width="300" height=""   src="'+url+'" class="img-responsive">'#}
+            uri = $(this).data('url')
+            $('#vista_previa').attr('data-zoom-image', uri);
+            $('#vista_previa').attr('src', uri);
+            console.log($('#vista_previa').data('zoom-image'))
+        });
+    </script>
+{% endblock %}
+
