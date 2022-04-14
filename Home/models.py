@@ -66,8 +66,6 @@ class Editable_Xurimotos(models.Model):
     titulo_3 = models.CharField(max_length=100, null=True, blank=True, help_text='Título 3 - Secc-Inicio P3')
     detalle_3 = models.CharField(max_length=500, null=True, blank=True, help_text='Detalle 3 - Secc-Inicio P3')
     video = models.FileField(upload_to='galeria', null=True, blank=True, help_text='Video- Secc-Inicio p3 Video')
-    img_fondo_vide_horiz = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='1920x420 - Secc-Inicio P3 Imagen Fondo Horizontal  Video')
-    img_fondo_vide_verti = models.ImageField(upload_to='galeria', null=True, blank=True,help_text='1920x420 - Secc-Inicio P3 Imagen Fondo Vertical  Video')
     banner_img = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='1350x390 - Secc-Producto P3')
     mision_img_1 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='660x840 - Secc-Empresa P1 Imagen misión')
     mision_img_2 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='660x840 - Secc-Empresa P1 Imagen misión')
@@ -101,16 +99,6 @@ class Slider_fondo(models.Model):
 class Slider(models.Model):
     estado = models.BooleanField(default=False)
     imagen = models.ImageField(upload_to='slider', null=True, blank=True, help_text='Inicio - Slider  Imagenes 500*900')
-
-    # def delete(self, using=None, keep_parents=False):
-    #     storage, path = self.imagen.storage, self.imagen.path
-    #     super(Slider, self).delete()
-    #     storage.delete(path)
-    #
-    # def save(self, force_insert=False, force_update=False, using=None,
-    #          update_fields=None):
-    #     self.resize(self.imagen,500,300,'png')
-    #     super(Slider, self).save()
 
     def miniatura(self):
         return mark_safe("<img src='/media/%s' style='width: 200px'>" % self.imagen)
@@ -152,11 +140,8 @@ class Destacados_Xurimotos(models.Model):
     dest_link_10 = models.CharField(max_length=100, null=True, blank=True, help_text='Link  - Secc-Productos P3')
     dest_imagen_10 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='325x275 - Secc-Productos P3 Imagen')
 
-
     class Meta:
         verbose_name_plural = "5. Destacados Xurimotos"
-
-
 
 
 class Producto_carrusel(models.Model):
@@ -185,8 +170,6 @@ class Producto_carrusel(models.Model):
 
 
 
-
-
 class Distribuidores_Xurimotos(models.Model):
     lugar = models.CharField(max_length=100, null=True, blank=True, help_text='Ingresar ubicación del local')
     local = models.CharField(max_length=100, null=True, blank=True, help_text='Ingresar nombre del local')
@@ -203,15 +186,6 @@ class Distribuidores_Xurimotos(models.Model):
     class Meta:
         verbose_name_plural = "8. Distribuidores Xurimotos"
 
-# class Market(models.Model):
-#     titulo = models.CharField(max_length=100, null=True, blank=True)
-#     imagen = models.ImageField(upload_to='market', null=True, blank=True, help_text='Imagenes de la Comunidad de Xurimoto')
-#
-#     def miniatura(self):
-#         return mark_safe("<img src='/media/%s' style='width: 200px'>"%self.imagen)
-#
-#     class Meta:
-#         verbose_name_plural = "8. Publicidad "
 
 
 class Blogs(models.Model):
@@ -226,7 +200,6 @@ class Blogs(models.Model):
     def __str__(self):
 
         return '%s ' % (self.titulo)
-
 
     def miniatura(self):
         return mark_safe('<image width="300" height="150"  src="/media/%s">' % self.tipo_imagen)

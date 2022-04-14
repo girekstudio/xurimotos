@@ -4,9 +4,7 @@ from django.contrib import admin
 from Home.models import *
 from xurimotos.snippers import Attr
 
-# class Producto_galeria_carruselInline(admin.StackedInline):
-#     model = Producto_galeria_carrusel
-#     extra = 0
+
 
 @admin.register(Marca_Xurimotos)
 class Marca_XurimotosAdmin(admin.ModelAdmin):
@@ -32,7 +30,6 @@ class Destacados_XurimotosAdmin(admin.ModelAdmin):
 class Producto_carruselAdmin(admin.ModelAdmin):
     list_display = Attr(Producto_carrusel)
     list_display_links = Attr(Producto_carrusel)
-    # inlines = [Producto_galeria_carruselInline]
 
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
@@ -44,16 +41,10 @@ class Slider_fondoAdmin(admin.ModelAdmin):
     list_display = Attr(Slider_fondo)+["miniatura"]
     list_display_links = Attr(Slider_fondo)
 
-
 @admin.register(Blogs)
 class BlogsAdmin(admin.ModelAdmin):
     list_display = Attr(Blogs)+["miniatura"]
     list_display_links = Attr(Blogs)
-
-# @admin.register(Market)
-# class MarketAdmin(admin.ModelAdmin):
-#     list_display = Attr(Market)
-#     list_display_links = Attr(Market)
 
 @admin.register(Suscripcion_Email)
 class modelo(admin.ModelAdmin):

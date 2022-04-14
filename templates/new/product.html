@@ -8,8 +8,10 @@
                 <div class="row">
                     <div class="col-md-12 align-self-center p-static order-2 text-center">
                         <br><br><br><br>
-                        <h4 class=" koho-semibold text-color-primary font-weight-normal text-6"
-                            style="letter-spacing: 7px">PRODUCTOS</h4>
+                        <a href="/productos/"
+                               class="text-color-black text-color-hover-primary text-decoration-none"><h4 class=" koho-semibold text-color-primary font-weight-normal text-6"
+                            style="letter-spacing: 7px">PRODUCTOS</h4></a>
+
                     </div>
                 </div>
             </div>
@@ -22,15 +24,15 @@
                                class="text-color-black text-color-hover-primary text-decoration-none">Productos</a>
                         </li>
                         <li><a
-                                class="text-color-black text-color-hover-primary text-decoration-none">{{ producto.categoria.nombre }}</a>
+                                class="text-color-black text-color-hover-primary text-decoration-none">{{ producto.categoria.nombre_producto }}</a>
                         </li>
-                        <li>{{ producto.descripcion }}</li>
+                        <li>{{ producto.nombre_producto }}</li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                         <div class="thumb-gallery-wrapper" >
                             <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3"  style="height: 75%!important;" >
                                 {% if not producto.foto %}
@@ -69,67 +71,20 @@
                         </div>
                     </div>
 
-                    {#                    <div class="col-md-1 d-none  d-sm-none  d-md-block" style="margin: 10px" align="center">#}
-                    {#                        <div class="thumb-gallery-thumbs ">#}
-                    {#                            <a href="#" class="data" data-url="/media/{{ producto.foto }}">#}
-                    {#                                <img alt="" width="50" height="50" class="img-responsive"#}
-                    {#                                     src="/media/{{ producto.foto }}">#}
-                    {#                            </a>#}
-                    {##}
-                    {#                        </div>#}
-                    {#                        <br>#}
-                    {##}
-                    {##}
-                    {#                        {% for imagen in producto.galeria_set.all %}#}
-                    {#                            <div class="thumb-gallery-thumbs">#}
-                    {#                                <a href="#" class="data" data-url="/media/{{ imagen.imagen }}">#}
-                    {#                                    <img alt="" width="50" height="50" class="img-responsive"#}
-                    {#                                         src="/media/{{ imagen.imagen }}">#}
-                    {#                                </a>#}
-                    {##}
-                    {#                            </div>#}
-                    {#                            <br>#}
-                    {##}
-                    {#                        {% endfor %}#}
-                    {#                    </div>#}
-                    {##}
-                    {##}
-                    {#                    <div class="col-md-4">#}
-                    {#                        <div class="thumb-gallery owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>#}
-                    {#                            <div class="thumb-gallery-detail mb-3">#}
-                    {#                                <div>#}
-                    {#                                                        {% if not producto.foto %}#}
-                    {#                                                            <div>#}
-                    {#                                                                <img alt="" class="img-fluid" src="/media/xuri.jpg">#}
-                    {#                                                            </div>#}
-                    {#                                                        {% else %}#}
-                    {##}
-                    {#                                                            <img id="vista_previa" alt="" class="img-fluid" src="/media/{{ producto.foto }}"#}
-                    {#                                                                 data-zoom-image="/media/{{ producto.foto }}">#}
-                    {#                                                        {% endif %}#}
-                    {##}
-                    {#                                </div>#}
-                    {##}
-                    {#                            </div>#}
-                    {##}
-                    {#                        </div>#}
-                    {##}
-                    {##}
-                    {#                    </div>#}
 
-                    <div class="col-md-6">
+                    <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                         <div class="summary entry-summary position-relative">
                             <div class="product-thumb-info-badges-wrapper  ">
                                 <div class="d-flex align-items-center">
-                                    <h1 class="mb-0 font-weight-bold text-7"><span
-                                            class=" koho-bold  badge badge-ecommerce bg-color-primary text-color-black mr-2 line-height-1 align-middle ">NUEVO</span>{{ producto.descripcion }}
-                                    </h1>
+{#                                    <h1 class="mb-0 font-weight-bold text-7"><span#}
+{#                                            class=" koho-bold  badge badge-ecommerce bg-color-primary text-color-black mr-2 line-height-1 align-middle ">NUEVO</span>{{ producto.descripcion }}#}
+{#                                    </h1>#}
                                 </div>
                                 <br>
                                 <p class="graphik-medium" style=" color: #1C1C1C!important;"><strong>Sobre este
                                     producto</strong></p>
                                 <p class="graphik-regular  mb-3 "
-                                   style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important;">{{ producto.descripcion }}</p>
+                                   style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important;">{{ producto.nombre_producto }}</p>
                                 <div class="toggle toggle-minimal toggle-primary" data-plugin-toggle>
                                     <section class="toggle ">
                                         <a class=" graphik-medium text-color-black  toggle-title">Información
@@ -164,9 +119,7 @@
                                 {% for relacionado in relacionados %}
                                     <div class="product mb-0 btn btn-light">
                                         <div class="product-thumb-info border-0 mb-3" style="border-radius: 20px">
-                                            <div class="product-thumb-info-badges-wrapper">
-                                                <span class="badge badge-ecommerce bg-color-primary text-color-black ">NUEVO</span>
-                                            </div>
+
                                             <a href="/product/?id={{ relacionado.id }}">
                                                 <div class="product-thumb-info-image" style="background:#ffffff !important;">
                                                     {% if relacionado.foto %}
@@ -182,10 +135,10 @@
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <a href="#"
-                                                   class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">electronics</a>
+                                                   class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">{{ relacionado.categoria }}</a>
                                                 <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
                                                     <a href="/product/?id={{ relacionado.id }}"
-                                                       class="text-color-dark text-color-hover-primary">{{ relacionado.descripcion }}</a>
+                                                       class="text-color-dark text-color-hover-primary">{{ relacionado.nombre_producto }}</a>
                                                 </h3>
                                             </div>
                                         </div>

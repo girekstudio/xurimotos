@@ -166,9 +166,7 @@
                                         <div class="product mb-0 " style="margin: 5px !important; border: #0a0a1a">
                                             <div class="product border-0 mb-3"
                                                  style="border-radius: 20px">
-                                                <div class="product " style="align-content: start; text-align: start">
-                                                    <span class="badge badge-ecommerce bg-color-primary">NUEVO</span>
-                                                </div>
+
                                                 <a href="/product/?id={{ producto.id }}">
                                                     <div class="product-thumb-info-image">
                                                         {% if not producto.foto %}
@@ -191,8 +189,8 @@
                                                     <a href="/product/?id={{ producto.id }}"
                                                        class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">
                                                         <h2 class=" graphik-medium text-5 text-left font-weight-medium font-alternative text-transform-none line-height-3 mb-0"
-                                                            title="{{ producto.descripcion }} ">
-                                                            {{ producto.descripcion |truncatechars:16 }}
+                                                            title="{{ producto.nombre_producto }} ">
+                                                            {{ producto.nombre_producto |truncatechars:16 }}
                                                         </h2>
                                                     </a>
                                                 </div>
@@ -217,9 +215,9 @@
                                         <div class="product mb-0 " style="margin: 5px !important; border: #0a0a1a">
                                             <div class="product border-0 mb-3"
                                                  style="border-radius: 20px">
-                                                <div class="product " style="align-content: start; text-align: start">
-                                                    <span class="badge badge-ecommerce bg-color-primary">NUEVO</span>
-                                                </div>
+{#                                                <div class="product " style="align-content: start; text-align: start">#}
+{#                                                    <span class="badge badge-ecommerce bg-color-primary">NUEVO</span>#}
+{#                                                </div>#}
                                                 <a href="/product/?id={{ producto.id }}">
                                                     <div class="product-thumb-info-image">
                                                         {% if not producto.foto %}
@@ -241,8 +239,8 @@
                                                     <a href="/product/?id={{ producto.id }}"
                                                        class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">
                                                         <h2 class=" graphik-medium text-5 text-left font-weight-medium font-alternative text-transform-none line-height-3 mb-0"
-                                                            title="{{ producto.descripcion }} ">
-                                                            {{ producto.descripcion }}
+                                                            title="{{ producto.nombre_producto }} ">
+                                                            {{ producto.nombre_producto }}
                                                         </h2>
                                                     </a>
                                                 </div>
@@ -710,25 +708,22 @@
             return query_string;
         }();
 
-        function url(nombre, valor) {
-            let uri = `${nombre}=${valor}`
-            for (const property in QueryString) {
-                if (property == nombre) {
-                    console.log("existe")
-                } else {
-                    if (QueryString[property] != "") {
-                        uri += `&${property}=${QueryString[property]}`
-                    }
-                }
-                console.log(uri)
-            }
-            location.href = "?" + uri
-        }
+        {#function url(nombre, valor) {#}
+        {#    let uri = `${nombre}=${valor}`#}
+        {#    for (const property in QueryString) {#}
+        {#        if (property == nombre) {#}
+        {#            console.log("existe")#}
+        {#        } else {#}
+        {#            if (QueryString[property] != "") {#}
+        {#                uri += `&${property}=${QueryString[property]}`#}
+        {#            }#}
+        {#        }#}
+        {#        console.log(uri)#}
+        {#    }#}
+        {#    location.href = "?" + uri#}
+        {#}#}
         {% if request.GET.color %}
             $("#color option[value=" + QueryString.color + "]").attr("selected", true);
-        {% endif %}
-        {% if request.GET.edades %}
-            $("#edades option[value=" + QueryString.edades + "]").attr("selected", true);
         {% endif %}
         {% if request.GET.ppagina %}
             $("#ppagina option[value=" + QueryString.ppagina + "]").attr("selected", true);
