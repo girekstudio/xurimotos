@@ -5,7 +5,7 @@ from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Font
 from simple_search import search_filter
-from Home.models import Marca_Xurimotos, Editable_Xurimotos, Destacados_Xurimotos, Producto_carrusel
+from Home.models import Marca_Xurimotos, Editable_Xurimotos, Destacados_Xurimotos, Producto_carrusel, Slider
 from Productos.models import Catalogo, Categoria, Marcas, Galeria
 import os
 import datetime
@@ -60,9 +60,10 @@ def producto_view(request):
     productos = Catalogo.objects.all().order_by('-id')[0:20]
     contexto={
         'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
+        'slider': Slider.objects.all(),
         'productos':CatalogoPaginado(request,prod,por_pagina),
         'catalogo': productos,
-        'producto_carrusel': Producto_carrusel.objects.first(),
+        'producto_carrusel': Producto_carrusel.objects.all(),
         'categorias':Categoria.objects.all().order_by('nombre'),
         'galeria': Galeria.objects.all(),
         'marcas':Marcas.objects.all().order_by('nombre'),
@@ -97,6 +98,7 @@ def catalogo_view(request):
     contexto={
         'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
         'catalogo': productos,
+        'slider': Slider.objects.all(),
         'productos':CatalogoPaginado(request,prod,por_pagina),
         # 'cantidad':cantidad,
         'categorias':Categoria.objects.all().order_by('nombre'),

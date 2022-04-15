@@ -66,6 +66,8 @@ class Editable_Xurimotos(models.Model):
     titulo_3 = models.CharField(max_length=100, null=True, blank=True, help_text='Título 3 - Secc-Inicio P3')
     detalle_3 = models.CharField(max_length=500, null=True, blank=True, help_text='Detalle 3 - Secc-Inicio P3')
     video = models.FileField(upload_to='galeria', null=True, blank=True, help_text='Video- Secc-Inicio p3 Video')
+    img_fondo_vide_horiz= models.FileField(upload_to='galeria', null=True, blank=True, help_text='Video- Secc-Inicio p3 Imagen fondo horizontal Video')
+    img_fondo_vide_verti= models.FileField(upload_to='galeria', null=True, blank=True, help_text='Video- Secc-Inicio p3 Imagen fondo vertical Video')
     banner_img = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='1350x390 - Secc-Producto P3')
     mision_img_1 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='660x840 - Secc-Empresa P1 Imagen misión')
     mision_img_2 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='660x840 - Secc-Empresa P1 Imagen misión')
@@ -74,8 +76,6 @@ class Editable_Xurimotos(models.Model):
     mision_detalle = models.CharField(max_length=500, null=True, blank=True, help_text='Detalle 1 - Secc-Empresa P1')
     vision_img_1 = models.ImageField(upload_to='galeria', null=True, blank=True,help_text='455x310- Secc-Empresa P1 Imagen misión')
     vision_img_2 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='455x310 - Secc-Empresa P1 Imagen misión')
-    vision_img_izq = models.ImageField(upload_to='galeria', null=True, blank=True,help_text='250x350 - Secc-Empresa P1 Imagen izquierda misión')
-    vision_img_dere = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='350x250 - Secc-Empresa P1 Imagen  derecha misión')
     vision_sub = models.CharField(max_length=100, null=True, blank=True, help_text='Subtítulo 1 - Secc-Empresa P1')
     vision_titulo = models.CharField(max_length=100, null=True, blank=True, help_text='Título 1 - Secc-Empresa P1')
     vision_detalle = models.CharField(max_length=500, null=True, blank=True, help_text='Detalle 1 - Secc-Empresa P1')
@@ -145,7 +145,7 @@ class Destacados_Xurimotos(models.Model):
 
 
 class Producto_carrusel(models.Model):
-    estado = models.BooleanField(default=False)
+    activo = models.BooleanField(default=False)
     titulo = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos')
     enlace = models.CharField(max_length=100, null=True, blank=True, help_text='Link - Secc-Productos ')
     imagen_1 = models.ImageField(upload_to='carrusel', null=True, blank=True, help_text='368X313 Producto - Carrusel')
@@ -167,6 +167,8 @@ class Producto_carrusel(models.Model):
 
     class Meta:
         verbose_name_plural = "6. Producto Carrusel"
+
+
 
 
 

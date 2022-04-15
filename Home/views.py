@@ -155,7 +155,7 @@ def contacto(request):
             subject,
             template,
             settings.EMAIL_HOST_USER,
-            ['girekpruebas@gmail.com']
+            ['xurimotos@gmail.com']
         )
 
         email.fail_silently = False
@@ -197,7 +197,6 @@ def distribuidores_view(request):
     contexto={
         'editable': Editable_Xurimotos.objects.all().first(),
         'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
-        'xpub': Market.objects.all(),
         'distribuidores':DistribuidoresPaginado(request,prod,por_pagina),
         'cantidad':cantidad,
         'categorias':Categoria.objects.all().order_by('nombre'),
@@ -224,14 +223,3 @@ def arreglarProblemas(request):
             prod.save()
     return HttpResponse("Se aplicaron los cambios..!")
 
-# def FormularioSuscripcion_Email(request):
-#
-#     if request.POST:
-#         print(request.POST)
-#         suscripcion = Suscripcion_Email.objects.create(email=request.POST['email'])
-#         messages.add_message(request, messages.SUCCESS, "Gracias por preferirnos!. Nuestro asesor se contactará contigo.")
-#         return HttpResponseRedirect("/")
-#
-#     else:
-#         return HttpResponseRedirect("/")
-#
