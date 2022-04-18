@@ -1,4 +1,34 @@
 {% extends 'new/index-corporate-7.html' %}
+{% block menu %}
+
+    <ul class="koho-regular nav nav-pills  " id="mainNav">
+        <li class="dropdown ">
+            <a class="dropdown-item  " href="/">
+                INICIO
+            </a>
+        </li>
+        <li class="dropdown  ">
+            <a class="dropdown-item" href="/productos/">
+                PRODUCTOS
+            </a>
+        </li>
+        <li class="dropdown ">
+            <a class="dropdown-item" href="/empresa/">
+                EMPRESA
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-item" href="/ubicacion/">
+                UBICACIÓN
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-item" href="/contacto/">
+                CONTÁCTANOS
+            </a>
+        </li>
+    </ul>
+{% endblock %}
 {% block main %}
     <div role="main" class="main">
         <section class="page-header page-header-modern bg-color-dark page-header-md"

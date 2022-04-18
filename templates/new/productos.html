@@ -1,4 +1,34 @@
 {% extends 'new/index-corporate-7.html' %}
+{% block menu %}
+
+    <ul class="koho-regular nav nav-pills  " id="mainNav">
+        <li class="dropdown ">
+            <a class="dropdown-item  " href="/">
+                INICIO
+            </a>
+        </li>
+        <li class="dropdown accessibility-open  ">
+            <a class="dropdown-item " href="/productos/">
+                PRODUCTOS
+            </a>
+        </li>
+        <li class="dropdown ">
+            <a class="dropdown-item" href="/empresa/">
+                EMPRESA
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-item" href="/ubicacion/">
+                UBICACIÓN
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-item" href="/contacto/">
+                CONTÁCTANOS
+            </a>
+        </li>
+    </ul>
+{% endblock %}
 {% block main %}
     {% load render_paginator %}
     <div role="main">
@@ -136,8 +166,9 @@
                          style=";align-items: center;justify-content: center; padding-right:15px!important;padding-left: 15px!important;background-color:#F6F6F6!important; border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
 
                         <br>
-                        <p class="koho-semibold text-sm-3  text-md-3 text-lg-3"
-                           style="margin: 10px !important; text-align: center; "> EXPLORAR MÁS</p>
+                        <a href="/catalogo/">
+                        <p class="koho-semibold text-sm-3  text-md-3 text-lg-3"style="margin: 10px !important; text-align: center; "> EXPLORAR MÁS</p>
+                        </a>
                         {% for producto_ in producto_carrusel %}
                             {% if producto_.activo %}<h3 class="graphik-bold  text-sm-4 text-md-4 text-lg-3 "
                                                          style="text-align: center; margin-top: -10px;margin-bottom: 0px!important;">{{ producto_.titulo }}</h3>

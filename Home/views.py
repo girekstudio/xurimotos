@@ -189,7 +189,7 @@ def distribuidores_view(request):
 
     cantidad=prod.count()
 
-    por_pagina=20
+    por_pagina=10
     if request.GET.get('ppagina'):
         por_pagina=int(request.GET.get('ppagina'))
 
@@ -205,8 +205,6 @@ def distribuidores_view(request):
         'destacado': Destacados_Xurimotos.objects.all().first(),
 
     }
-    if request.GET.get('modo')=='Lista':
-        return render(request, 'new/catalogo-lista.html', contexto)
     return render(request, 'new/distribuidores.html',contexto)
 
 def arreglarProblemas(request):

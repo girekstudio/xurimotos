@@ -51,7 +51,7 @@ class modelo(admin.ModelAdmin):
     list_display = Attr(Suscripcion_Email)
     list_display_links = Attr(Suscripcion_Email)
 
-@admin.register(Envio_Email)
-class Envio_EmailsAdmin(admin.ModelAdmin):
-    list_display = Attr(Envio_Email)
-    list_display_links = Attr(Envio_Email)
+# @admin.register(Envio_Email)
+# class Envio_EmailsAdmin(admin.ModelAdmin):
+#     list_display = Attr(Envio_Email)
+#     list_display_links = Attr(Envio_Email)

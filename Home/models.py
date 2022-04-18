@@ -216,14 +216,14 @@ class Suscripcion_Email(models.Model):
     class Meta:
         verbose_name_plural = "9.1. Suscripción Email"
 
-
-class Envio_Email(models.Model):
-    servidor_smtp=models.CharField(max_length=100)
-    puerto=models.IntegerField()
-    email=models.EmailField(max_length=200)
-    password=models.CharField(max_length=100)
-    copia=models.EmailField(max_length=200)
-    mensaje_personalizado = models.TextField(default="Gracias por elegir xurimotos")
-
+#
+# class Envio_Email(models.Model):
+#     servidor_smtp=models.CharField(max_length=100)
+#     puerto=models.IntegerField()
+#     email=models.EmailField(max_length=200)
+#     password=models.CharField(max_length=100)
+#     copia=models.EmailField(max_length=200)
+#     mensaje_personalizado = models.TextField(default="Gracias por elegir xurimotos")
+#
 
 
