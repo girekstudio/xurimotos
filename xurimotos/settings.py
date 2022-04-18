@@ -141,17 +141,17 @@ EMAIL_USE_TLS = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT='static'
+STATIC_ROOT='/var/www/xurimotos/static'
 # STATIC_ROOT="/var/www/xurimotos/media"
 
-STATICFILES_DIRS=[
-    'static',
-]
+#STATICFILES_DIRS=[
+#    'static',
+#]
 
 
 MEDIA_URL='/media/'
-MEDIA_ROOT='media'
-# MEDIA_ROOT="/var/www/xurimotos/media"
+#MEDIA_ROOT='media'
+MEDIA_ROOT="/var/www/xurimotos/media"
 
 
 # Default primary key field type
