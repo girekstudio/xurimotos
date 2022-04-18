@@ -65,7 +65,7 @@ class Galeria(models.Model,ResizeImageMixin):
         if not self.imagen:
             self.imagen = 'xuri.jpg'
         else:
-            self.resize(imageField=self.imagen, ancho=800, alto=800, format='png', marca=(300, 300))
+            self.resize(imageField=self.imagen, ancho=800, alto=800, format='png')
         super(Galeria, self).save()
     class Meta:
         verbose_name_plural="4. Galeria"
