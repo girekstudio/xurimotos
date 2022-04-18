@@ -1,5 +1,35 @@
 {% extends 'new/index-corporate-7.html' %}
 {% load static %}
+{% block menu %}
+
+    <ul class="koho-regular nav nav-pills  " id="mainNav">
+        <li class="dropdown ">
+            <a class="dropdown-item  " href="/">
+                INICIO
+            </a>
+        </li>
+        <li class="dropdown accessibility-open ">
+            <a class="dropdown-item" href="/productos/">
+                PRODUCTOS
+            </a>
+        </li>
+        <li class="dropdown ">
+            <a class="dropdown-item" href="/empresa/">
+                EMPRESA
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-item" href="/ubicacion/">
+                UBICACIÓN
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-item" href="/contacto/">
+                CONTÁCTANOS
+            </a>
+        </li>
+    </ul>
+{% endblock %}
 {% block main %}
     <div role="main">
         <section class="page-header page-header-modern bg-color-dark page-header-md"
@@ -8,7 +38,7 @@
                 <div class="row">
                     <div class="col-md-12 align-self-center p-static order-2 text-center">
                         <br><br><br><br>
-                        <a href="/productos/"
+                        <a href="/catalogo/"
                                class="text-color-black text-color-hover-primary text-decoration-none"><h4 class=" koho-semibold text-color-primary font-weight-normal text-6"
                             style="letter-spacing: 7px">PRODUCTOS</h4></a>
 
@@ -20,11 +50,11 @@
             <div class="row" style="margin-top: 50px">
                 <div class="col graphik-regular">
                     <ul class="breadcrumb text-color-black breadcrumb-style-2 d-block text-4 mb-4">
-                        <li><a href="/productos/"
+                        <li><a href="/catalogo/"
                                class="text-color-black text-color-hover-primary text-decoration-none">Productos</a>
                         </li>
-                        <li><a
-                                class="text-color-black text-color-hover-primary text-decoration-none">{{ producto.categoria.nombre_producto }}</a>
+                        <li><a href="/catalogo/?q={{ producto.categoria.nombre }}"
+                                class="text-color-black text-color-hover-primary text-decoration-none">{{ producto.categoria.nombre }}</a>
                         </li>
                         <li>{{ producto.nombre_producto }}</li>
                     </ul>
@@ -32,9 +62,9 @@
             </div>
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                    <div class="col-12 col-sm-6 col-md-5 col-lg-5 col-xl-5">
                         <div class="thumb-gallery-wrapper" >
-                            <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3"  style="height: 75%!important;" >
+                            <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3 "  style="height: 75%!important;" >
                                 {% if not producto.foto %}
                                     <div >
                                         <img alt="" class="img-fluid" src="/media/xuri.jpg" >
@@ -52,7 +82,7 @@
                                     {% endfor %}
                                 {% endif %}
                             </div>
-                            <div class="thumb-gallery-thumbs owl-carousel  owl-theme manual thumb-gallery-thumbs "  >
+                            <div class="thumb-gallery-thumbs owl-carousel  owl-theme manual thumb-gallery-thumbs d-flex align-items-center justify-content-center "  >
                                 {% if not producto.foto %}
                                     <div>
                                         <img alt="" class="img-fluid" src="/media/xuri.jpg" style="background-color: #ffffff">
@@ -72,27 +102,24 @@
                     </div>
 
 
-                    <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                    <div class="col-12 col-sm-6 col-md-7 col-lg-7 col-xl-7">
                         <div class="summary entry-summary position-relative">
                             <div class="product-thumb-info-badges-wrapper  ">
                                 <div class="d-flex align-items-center">
-{#                                    <h1 class="mb-0 font-weight-bold text-7"><span#}
-{#                                            class=" koho-bold  badge badge-ecommerce bg-color-primary text-color-black mr-2 line-height-1 align-middle ">NUEVO</span>{{ producto.descripcion }}#}
-{#                                    </h1>#}
+                                    <h1 class="graphik-bold  mb-0 font-weight-bold text-7"><span
+                                            class=" koho-bold  badge badge-ecommerce bg-color-primary text-color-black mr-2 line-height-1 align-middle  "style="letter-spacing: 0.3px!important;">{{ producto.categoria.nombre }}</span>{{ producto.nombre_producto }} </h1>
                                 </div>
                                 <br>
                                 <p class="graphik-medium" style=" color: #1C1C1C!important;"><strong>Sobre este
                                     producto</strong></p>
-                                <p class="graphik-regular  mb-3 "
-                                   style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important;">{{ producto.nombre_producto }}</p>
+                                <p class="graphik-regular  mb-3 text-3 " style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important; text-align: justify">{{ producto.detalle }}</p>
                                 <div class="toggle toggle-minimal toggle-primary" data-plugin-toggle>
                                     <section class="toggle ">
                                         <a class=" graphik-medium text-color-black  toggle-title">Información
                                             técnica</a>
                                         <div class="toggle-content">
                                             {% if producto.info_tecnica %}
-                                                <p class="graphik-regular"
-                                                   style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important;">{{ producto.info_tecnica }}</p>
+                                                <p class="graphik-regular text-3"  style=" color: #1C1C1C!important;letter-spacing: 0.1px!important;line-height:22px!important;">{{ producto.info_tecnica }}</p>
                                             {% endif %}
                                         </div>
                                     </section>
@@ -155,6 +182,7 @@
                             </div>
                         </div>
                     </div>
+                    <br><br>
                 </div>
             </div>
         </div>

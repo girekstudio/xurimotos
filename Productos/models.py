@@ -43,7 +43,7 @@ class Catalogo(models.Model,ResizeImageMixin):
         if not self.foto:
             self.foto = 'xuri.jpg'
         else:
-            self.resize(imageField=self.foto, ancho=800, alto=800, format='png', marca=(265, 275))
+            self.resize(imageField=self.foto, ancho=800, alto=800, format='png' )
         super(Catalogo, self).save()
 
     def __str__(self):
@@ -56,6 +56,7 @@ class Catalogo(models.Model,ResizeImageMixin):
 class Galeria(models.Model,ResizeImageMixin):
     producto=models.ForeignKey(Catalogo,on_delete=models.CASCADE)
     imagen=models.ImageField(upload_to='producto/galeria')
+
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):

@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-from Home.models import Envio_Email
+# from Home.models import Envio_Email
 from xurimotos.settings import BASE_DIR
 
 import os
@@ -40,17 +40,17 @@ class ResizeImageMixin:
 
 
 
-def enviar_email(destinatarios:list,asunto,mensaje_texto):
-    datos_email = Envio_Email.objects.last()
-    destinatarios.append(datos_email.copia)
-    mensaje = MIMEMultipart()
-    mensaje['From'] = datos_email.email
-    mensaje['To'] = ", ".join(destinatarios)
-    mensaje['Subject'] = asunto
-    mensaje.attach(MIMEText(mensaje_texto, 'plain'))
-    sesion_smtp = smtplib.SMTP(datos_email.servidor_smtp, datos_email.puerto)
-    sesion_smtp.starttls()
-    sesion_smtp.login(datos_email.email, datos_email.password)
-    texto = mensaje.as_string()
-    sesion_smtp.sendmail(datos_email.email, destinatarios, texto)
-    sesion_smtp.quit()
+# def enviar_email(destinatarios:list,asunto,mensaje_texto):
+#     datos_email = Envio_Email.objects.last()
+#     destinatarios.append(datos_email.copia)
+#     mensaje = MIMEMultipart()
+#     mensaje['From'] = datos_email.email
+#     mensaje['To'] = ", ".join(destinatarios)
+#     mensaje['Subject'] = asunto
+#     mensaje.attach(MIMEText(mensaje_texto, 'plain'))
+#     sesion_smtp = smtplib.SMTP(datos_email.servidor_smtp, datos_email.puerto)
+#     sesion_smtp.starttls()
+#     sesion_smtp.login(datos_email.email, datos_email.password)
+#     texto = mensaje.as_string()
+#     sesion_smtp.sendmail(datos_email.email, destinatarios, texto)
+#     sesion_smtp.quit()

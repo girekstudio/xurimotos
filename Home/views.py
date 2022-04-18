@@ -155,7 +155,7 @@ def contacto(request):
             subject,
             template,
             settings.EMAIL_HOST_USER,
-            ['girekpruebas@gmail.com']
+            ['xurimotos@gmail.com']
         )
 
         email.fail_silently = False
@@ -189,7 +189,7 @@ def distribuidores_view(request):
 
     cantidad=prod.count()
 
-    por_pagina=20
+    por_pagina=10
     if request.GET.get('ppagina'):
         por_pagina=int(request.GET.get('ppagina'))
 
@@ -197,7 +197,6 @@ def distribuidores_view(request):
     contexto={
         'editable': Editable_Xurimotos.objects.all().first(),
         'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
-        'xpub': Market.objects.all(),
         'distribuidores':DistribuidoresPaginado(request,prod,por_pagina),
         'cantidad':cantidad,
         'categorias':Categoria.objects.all().order_by('nombre'),
@@ -206,8 +205,6 @@ def distribuidores_view(request):
         'destacado': Destacados_Xurimotos.objects.all().first(),
 
     }
-    if request.GET.get('modo')=='Lista':
-        return render(request, 'new/catalogo-lista.html', contexto)
     return render(request, 'new/distribuidores.html',contexto)
 
 def arreglarProblemas(request):
@@ -224,14 +221,3 @@ def arreglarProblemas(request):
             prod.save()
     return HttpResponse("Se aplicaron los cambios..!")
 
-# def FormularioSuscripcion_Email(request):
-#
-#     if request.POST:
-#         print(request.POST)
-#         suscripcion = Suscripcion_Email.objects.create(email=request.POST['email'])
-#         messages.add_message(request, messages.SUCCESS, "Gracias por preferirnos!. Nuestro asesor se contactará contigo.")
-#         return HttpResponseRedirect("/")
-#
-#     else:
-#         return HttpResponseRedirect("/")
-#
