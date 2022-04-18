@@ -84,3 +84,4 @@ class Marcas(models.Model,ResizeImageMixin):
         verbose_name_plural="2. Marcas"
 
 
+
