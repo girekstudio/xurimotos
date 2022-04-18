@@ -35,3 +35,4 @@ class MarcasAdmin(admin.ModelAdmin):
     list_display = Attr(Marcas)
     list_display_links = Attr(Marcas)
 
+
