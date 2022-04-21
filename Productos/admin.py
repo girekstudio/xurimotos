@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from import_export.admin import ImportExportModelAdmin
 
-from Productos.models import Catalogo, Galeria, Categoria, Marcas
+from Productos.models import Catalogo, Galeria, Categoria
 from Productos.resource import CatalogoResource
 from xurimotos.snippers import Attr
 
@@ -30,9 +30,6 @@ class CategoriaAdmin(admin.ModelAdmin):
     list_display = Attr(Categoria)
     list_display_links = Attr(Categoria)
 
-@admin.register(Marcas)
-class MarcasAdmin(admin.ModelAdmin):
-    list_display = Attr(Marcas)
-    list_display_links = Attr(Marcas)
+
 
 

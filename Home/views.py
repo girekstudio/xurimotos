@@ -25,35 +25,15 @@ def DistribuidoresPaginado(request,distribuidores,cantidad):
 
 def index(request):
 
-    if not request.session.get('pedido'):
-        request.session['pedido']=[]
-        request.session.save()
-        marca=Marca_Xurimotos.objects.last()
-        request.session["logo"]= "/media/"+str(marca.logo)
-        request.session["favicon"]="/media/"+str(marca.favicon)
-        request.session["logo_pie_pag"] = "/media/" + str(marca.logo_pie_pag)
-        request.session["whatsapp"] = marca.whatsapp
-        request.session["telefono"] =   marca.telefono
-        request.session["celular"] = marca.celular
-        request.session["correo"] =   marca.correo
-        request.session["direccion"] =   marca.direccion
-        request.session["horario_lu_vier"] =   marca.horario_lu_vier
-        request.session["horario_sab"] =   marca.horario_sab
-        request.session["horario_dom"] =  marca.horario_dom
-        request.session["facebook"] =   marca.facebook
-        request.session["instagram"] =  marca.instagram
-        request.session["tiktok"] = marca.tiktok
-        request.session["youtube"] =  marca.youtube
-
     productos=Catalogo.objects.all().order_by('-id')[0:20]
     contexto ={
+        'marca_xuri': Marca_Xurimotos.objects.all().first(),
         'slider_fondo': Slider_fondo.objects.all().first(),
         'slider': Slider.objects.all(),
         'producto_carrusel': Producto_carrusel.objects.first(),
         'catalogo': productos,
         'blog': Blogs.objects.all(),
         'categorias':Categoria.objects.all().order_by('nombre'),
-        'marcas':Marcas.objects.all().order_by('nombre'),
         'editable': Editable_Xurimotos.objects.all().first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
     }
@@ -65,7 +45,8 @@ def index(request):
 
 def empresa(request):
     contexto={
-        'marca' : Marca_Xurimotos.objects.first(),
+        'marca_xuri' : Marca_Xurimotos.objects.all().first(),
+        'banner':Banner.objects.all(),
         'editable': Editable_Xurimotos.objects.all().first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
     }
@@ -73,17 +54,11 @@ def empresa(request):
 
 
 
-def prueba(request):
-    contexto={
-        'slider': Slider.objects.all(),
-
-    }
-    return render(request, 'new/prueba.html', contexto)
 
 
 def blog(request):
     contexto={
-        'marca': Marca_Xurimotos.objects.first(),
+        'marca_xuri': Marca_Xurimotos.objects.all().first(),
         'editable': Editable_Xurimotos.objects.all().first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
 
@@ -94,6 +69,7 @@ def blog(request):
 def post(request, n):
 
     contexto = {
+        'marca_xuri': Marca_Xurimotos.objects.all().first(),
         'editable': Editable_Xurimotos.objects.all().first(),
         'blogg': Blogs.objects.get(id=n),
         'blogs': Blogs.objects.all(),
@@ -124,7 +100,7 @@ def ubicacion_view(request):
     ubicacion = Distribuidores_Xurimotos.objects.all().order_by('-id')[0:20]
 
     contexto={
-        'marca' : Marca_Xurimotos.objects.first(),
+        'marca_xuri' : Marca_Xurimotos.objects.all().first(),
         'editable': Editable_Xurimotos.objects.all().first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
         'ubicacion': DistribuidoresPaginado(request,ubica,por_pagina),
@@ -165,8 +141,7 @@ def contacto(request):
 
 
     contexto={
-        # 'messages': success,
-        'marca': Marca_Xurimotos.objects.all().first(),
+        'marca_xuri': Marca_Xurimotos.objects.all().first(),
         'editable': Editable_Xurimotos.objects.all().first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
     }
@@ -196,12 +171,11 @@ def distribuidores_view(request):
 
     contexto={
         'editable': Editable_Xurimotos.objects.all().first(),
-        'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
+        'marca_xuri': Marca_Xurimotos.objects.all().first(),
         'distribuidores':DistribuidoresPaginado(request,prod,por_pagina),
         'cantidad':cantidad,
         'categorias':Categoria.objects.all().order_by('nombre'),
         'galeria': Galeria.objects.all(),
-        'marcas':Marcas.objects.all().order_by('nombre'),
         'destacado': Destacados_Xurimotos.objects.all().first(),
 
     }

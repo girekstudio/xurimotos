@@ -7,14 +7,9 @@ from django.utils.safestring import mark_safe
 from xurimotos.settings import BASE_DIR
 from xurimotos.snippers import ResizeImageMixin
 
-class Categoria(models.Model,ResizeImageMixin):
+class Categoria(models.Model):
     nombre=models.CharField(max_length=50)
-    icono=models.ImageField(upload_to="icono",null=True,blank=True)
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        if self.icono:
-            self.resize(imageField=self.icono, ancho=100, alto=100, format='png')
-        super(Categoria, self).save()
+
 
     def __str__(self):
         return self.nombre
@@ -50,7 +45,7 @@ class Catalogo(models.Model,ResizeImageMixin):
         return self.nombre_producto
 
     class Meta:
-        verbose_name_plural = "3. Catalogo de Productos"
+        verbose_name_plural = "2. Catalogo de Productos"
 
 
 class Galeria(models.Model,ResizeImageMixin):
@@ -68,20 +63,8 @@ class Galeria(models.Model,ResizeImageMixin):
             self.resize(imageField=self.imagen, ancho=800, alto=800, format='png')
         super(Galeria, self).save()
     class Meta:
-        verbose_name_plural="4. Galeria"
+        verbose_name_plural="3. Galeria de Productos"
 
-class Marcas(models.Model,ResizeImageMixin):
-    nombre=models.CharField(max_length=50)
-    imagen=models.ImageField(upload_to='marcas',null=True,blank=True)
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        if self.imagen:
-            self.resize(imageField=self.imagen,ancho=120,alto=80,format='png')
-        super(Marcas, self).save()
-
-    class Meta:
-        verbose_name_plural="2. Marcas"
 
 
 
