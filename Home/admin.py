@@ -41,6 +41,13 @@ class Slider_fondoAdmin(admin.ModelAdmin):
     list_display = Attr(Slider_fondo)+["miniatura"]
     list_display_links = Attr(Slider_fondo)
 
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = Attr(Banner)+["miniatura"]
+    list_display_links = Attr(Banner)
+
+
 @admin.register(Blogs)
 class BlogsAdmin(admin.ModelAdmin):
     list_display = Attr(Blogs)+["miniatura"]

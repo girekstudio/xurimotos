@@ -41,7 +41,6 @@ urlpatterns = [
     path("contacto/",contacto),
     path("blog/",blog),
     path('post/<int:n>/', post),
-    path('prueba/', prueba),
     path("customScript/",arreglarProblemas)
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

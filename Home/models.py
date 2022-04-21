@@ -68,14 +68,15 @@ class Editable_Xurimotos(models.Model):
     video = models.FileField(upload_to='galeria', null=True, blank=True, help_text='Video- Secc-Inicio p3 Video')
     img_fondo_vide_horiz= models.FileField(upload_to='galeria', null=True, blank=True, help_text='Video- Secc-Inicio p3 Imagen fondo horizontal Video')
     img_fondo_vide_verti= models.FileField(upload_to='galeria', null=True, blank=True, help_text='Video- Secc-Inicio p3 Imagen fondo vertical Video')
-    banner_img = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='1350x390 - Secc-Producto P3')
     mision_img_1 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='660x840 - Secc-Empresa P1 Imagen misión')
     mision_img_2 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='660x840 - Secc-Empresa P1 Imagen misión')
+    mision_img_3 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='660x840 - Secc-Empresa P1 Imagen misión')
     mision_sub= models.CharField(max_length=100, null=True, blank=True, help_text='Subtítulo 1 - Secc-Empresa P1')
     mision_titulo = models.CharField(max_length=100, null=True, blank=True, help_text='Título 1 - Secc-Empresa P1')
     mision_detalle = models.CharField(max_length=500, null=True, blank=True, help_text='Detalle 1 - Secc-Empresa P1')
     vision_img_1 = models.ImageField(upload_to='galeria', null=True, blank=True,help_text='455x310- Secc-Empresa P1 Imagen misión')
     vision_img_2 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='455x310 - Secc-Empresa P1 Imagen misión')
+    vision_img_3 = models.ImageField(upload_to='galeria', null=True, blank=True,help_text='455x310 - Secc-Empresa P1 Imagen misión')
     vision_sub = models.CharField(max_length=100, null=True, blank=True, help_text='Subtítulo 1 - Secc-Empresa P1')
     vision_titulo = models.CharField(max_length=100, null=True, blank=True, help_text='Título 1 - Secc-Empresa P1')
     vision_detalle = models.CharField(max_length=500, null=True, blank=True, help_text='Detalle 1 - Secc-Empresa P1')
@@ -104,8 +105,44 @@ class Slider(models.Model):
         return mark_safe("<img src='/media/%s' style='width: 200px'>" % self.imagen)
 
     class Meta:
-        verbose_name_plural = "4. Slider Prodcutos"
+        verbose_name_plural = "3. Slider Prodcutos"
 
+class Banner(models.Model):
+    activo = models.BooleanField(default=False)
+    imagen_banner = models.ImageField(upload_to='banner', null=True, blank=True,help_text='1350x390 - Secc-Producto P3')
+
+    def miniatura(self):
+        return mark_safe("<img src='/media/%s' style='width: 200px'>" % self.imagen_banner)
+
+    class Meta:
+        verbose_name_plural = "4. Banner"
+
+
+
+class Menu_Destacados_Xurimotos(models.Model):
+    dest_titulo_01 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_01 = models.CharField(max_length=100, null=True, blank=True, help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_02 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_02 = models.CharField(max_length=100, null=True, blank=True,help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_03 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_03 = models.CharField(max_length=100, null=True, blank=True, help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_04 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_04 = models.CharField(max_length=100, null=True, blank=True,help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_05 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_05 = models.CharField(max_length=100, null=True, blank=True, help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_06 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_06 = models.CharField(max_length=100, null=True, blank=True, help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_07 = models.CharField(max_length=100, null=True, blank=True,help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_07 = models.CharField(max_length=100, null=True, blank=True,  help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_08 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_08 = models.CharField(max_length=100, null=True, blank=True, help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_09 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_09 = models.CharField(max_length=100, null=True, blank=True,  help_text='Link - Secc-Productos Menú destacados P3')
+    dest_titulo_10 = models.CharField(max_length=100, null=True, blank=True,help_text='Título - Secc-Productos Menú destacados P3')
+    dest_link_titulo_10 = models.CharField(max_length=100, null=True, blank=True,help_text='Link - Secc-Productos Menú destacados P3')
+
+    class Meta:
+        verbose_name_plural = "5. Menú Destacados Xurimotos"
 
 
 
@@ -141,7 +178,7 @@ class Destacados_Xurimotos(models.Model):
     dest_imagen_10 = models.ImageField(upload_to='galeria', null=True, blank=True, help_text='325x275 - Secc-Productos P3 Imagen')
 
     class Meta:
-        verbose_name_plural = "5. Destacados Xurimotos"
+        verbose_name_plural = "6. Destacados Xurimotos"
 
 
 class Producto_carrusel(models.Model):
@@ -166,7 +203,7 @@ class Producto_carrusel(models.Model):
         return mark_safe("<img src='/media/%s' style='width: 200px'>" % self.imagen_1)
 
     class Meta:
-        verbose_name_plural = "6. Producto Carrusel"
+        verbose_name_plural = "7. Producto Carrusel"
 
 
 
@@ -215,15 +252,4 @@ class Suscripcion_Email(models.Model):
 
     class Meta:
         verbose_name_plural = "9.1. Suscripción Email"
-
-#
-# class Envio_Email(models.Model):
-#     servidor_smtp=models.CharField(max_length=100)
-#     puerto=models.IntegerField()
-#     email=models.EmailField(max_length=200)
-#     password=models.CharField(max_length=100)
-#     copia=models.EmailField(max_length=200)
-#     mensaje_personalizado = models.TextField(default="Gracias por elegir xurimotos")
-#
-
 

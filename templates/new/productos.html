@@ -8,7 +8,7 @@
             </a>
         </li>
         <li class="dropdown accessibility-open  ">
-            <a class="dropdown-item " href="/productos/">
+            <a class="dropdown-item " href="/productos/" style="text-decoration-color: #fcbf00 !important; color: #fcbf00!important;">
                 PRODUCTOS
             </a>
         </li>
@@ -157,21 +157,25 @@
             <div class="container mb-3  " style="height:100%!important;width: 100% !important;">
                 <div class="row align-items-start text-start "
                      style="display: flex;align-items: center;justify-content: center">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10"
-                         style=" padding-right:15px!important;padding-left: 15px!important;">
-                        <img alt="" class="img-fluid" src="/media/{{ editable.banner_img }}"
-                             style="height:100%;border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
-                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+                        <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'autoplay': true, 'autoplayTimeout': 3000}">
+                            {% for banne in banner %}
+                                {% if banne.activo %}
+                                    <img alt="" class="img-fluid" src="/media/{{ banne.imagen_banner }}" style="height:100%;border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 align-items-center justify-content-center  "
                          style=";align-items: center;justify-content: center; padding-right:15px!important;padding-left: 15px!important;background-color:#F6F6F6!important; border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
-
                         <br>
                         <a href="/catalogo/">
-                        <p class="koho-semibold text-sm-3  text-md-3 text-lg-3"style="margin: 10px !important; text-align: center; "> EXPLORAR MÁS</p>
+                            <p class="koho-semibold text-sm-3  text-md-3 text-lg-3"
+                               style="margin: 10px !important; text-align: center; "> EXPLORAR MÁS</p>
                         </a>
                         {% for producto_ in producto_carrusel %}
-                            {% if producto_.activo %}<h3 class="graphik-bold  text-sm-4 text-md-4 text-lg-3 "
-                                                         style="text-align: center; margin-top: -10px;margin-bottom: 0px!important;">{{ producto_.titulo }}</h3>
+                            {% if producto_.activo %}<h3 class="graphik-bold  text-sm-4 text-md-4 text-lg-3 " style="text-align: center; margin-top: -10px;margin-bottom: 0px!important;">{{ producto_.titulo }}</h3>
                                 <div class="owl-item  row d-flex align-items-center justify-content-center ">
                                     <div class=" col-12 thumb-gallery owl-theme  d-flex align-items-center justify-content-center"
                                          data-plugin-options='{"items": 1, "margin": 5}'>
@@ -575,21 +579,21 @@
 
 
 
-    <script src="/static/js/estilosmas/swiper.min.js"></script>
-
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            direction: 'vertical',
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: false,
-            },
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-        });
-    </script>
+{#    <script src="/static/js/estilosmas/swiper.min.js"></script>#}
+{##}
+{#    <script>#}
+{#        var swiper = new Swiper('.swiper-container', {#}
+{#            direction: 'vertical',#}
+{#            pagination: {#}
+{#                el: '.swiper-pagination',#}
+{#                clickable: false,#}
+{#            },#}
+{#            autoplay: {#}
+{#                delay: 5000,#}
+{#                disableOnInteraction: false,#}
+{#            },#}
+{#        });#}
+{#    </script>#}
 
     <script>
         $(document).on('click', '.data', function () {

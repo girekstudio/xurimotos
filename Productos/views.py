@@ -5,8 +5,8 @@ from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Font
 from simple_search import search_filter
-from Home.models import Marca_Xurimotos, Editable_Xurimotos, Destacados_Xurimotos, Producto_carrusel, Slider
-from Productos.models import Catalogo, Categoria, Marcas, Galeria
+from Home.models import Marca_Xurimotos, Editable_Xurimotos, Destacados_Xurimotos, Producto_carrusel, Slider, Banner
+from Productos.models import Catalogo, Categoria, Galeria
 import os
 import datetime
 from xurimotos.settings import BASE_DIR
@@ -59,17 +59,16 @@ def producto_view(request):
 
     productos = Catalogo.objects.all().order_by('-id')[0:20]
     contexto={
-        'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
+        'marca_xuri': Marca_Xurimotos.objects.first(),
         'slider': Slider.objects.all(),
         'productos':CatalogoPaginado(request,prod,por_pagina),
         'catalogo': productos,
         'producto_carrusel': Producto_carrusel.objects.all(),
         'categorias':Categoria.objects.all().order_by('nombre'),
         'galeria': Galeria.objects.all(),
-        'marcas':Marcas.objects.all().order_by('nombre'),
-        # 'colores':getColores(prod),
         'editable': Editable_Xurimotos.objects.all().first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
+        'banner': Banner.objects.all(),
 
     }
     if request.GET.get('modo')=='Lista':
@@ -96,15 +95,12 @@ def catalogo_view(request):
 
     productos = Catalogo.objects.all().order_by('-id')[0:20]
     contexto={
-        'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
+        'marca_xuri': Marca_Xurimotos.objects.first(),
         'catalogo': productos,
         'slider': Slider.objects.all(),
         'productos':CatalogoPaginado(request,prod,por_pagina),
-        # 'cantidad':cantidad,
         'categorias':Categoria.objects.all().order_by('nombre'),
         'galeria': Galeria.objects.all(),
-        'marcas':Marcas.objects.all().order_by('nombre'),
-        # 'colores':getColores(prod),
         'editable': Editable_Xurimotos.objects.all().first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
 
@@ -120,7 +116,7 @@ def detalles_producto(request):
     pr=prod.nombre_producto.split()
     contexto={
         'editable': Editable_Xurimotos.objects.all().first(),
-        'marca_xurimotos': Marca_Xurimotos.objects.all().first(),
+        'marca_xuri': Marca_Xurimotos.objects.first(),
         'producto':prod,
         'relacionados':todos.filter(nombre_producto__icontains=pr[0]+ " "+ pr[1]).order_by('-id')
     }
