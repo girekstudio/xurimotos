@@ -76,8 +76,6 @@ def producto_view(request):
         return render(request, 'new/catalogo-lista.html', contexto)
     return render(request, 'new/productos.html',contexto)
 
-
-
 def catalogo_view(request):
     search_fields = ['nombre_producto','categoria__nombre']
     prod = Catalogo.objects.all().order_by('nombre_producto')
