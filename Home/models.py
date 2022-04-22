@@ -147,7 +147,7 @@ class Menu_Destacados_Xurimotos(models.Model):
 
 class Destacados_Xurimotos(models.Model):
     dest_titulo_01 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos P3')
-    dest_sub_titulo_01 = models.CharField(max_length=100, null=True, blank=True,help_text='Subtitulo - Secc-Productos P3')
+    dest_link_01 = models.CharField(max_length=100, null=True, blank=True, help_text='Link  - Secc-Productos P3')
     dest_imagen_01 = models.ImageField(upload_to='galeria', null=True, blank=True,  help_text='325x275 - Secc-Productos P3 Imagen')
     dest_titulo_02 = models.CharField(max_length=100, null=True, blank=True, help_text='Título - Secc-Productos P3')
     dest_link_02 = models.CharField(max_length=100, null=True, blank=True, help_text='Link  - Secc-Productos P3')
