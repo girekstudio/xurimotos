@@ -26,6 +26,11 @@ class Destacados_XurimotosAdmin(admin.ModelAdmin):
     list_display = Attr(Destacados_Xurimotos)
     list_display_links = Attr(Destacados_Xurimotos)
 
+@admin.register(Menu_Destacados_Xurimotos)
+class Menu_Destacados_XurimotosAdmin(admin.ModelAdmin):
+    list_display = Attr(Menu_Destacados_Xurimotos)
+    list_display_links = Attr(Menu_Destacados_Xurimotos)
+
 @admin.register(Producto_carrusel)
 class Producto_carruselAdmin(admin.ModelAdmin):
     list_display = Attr(Producto_carrusel)
@@ -58,7 +63,4 @@ class modelo(admin.ModelAdmin):
     list_display = Attr(Suscripcion_Email)
     list_display_links = Attr(Suscripcion_Email)
 
-# @admin.register(Envio_Email)
-# class Envio_EmailsAdmin(admin.ModelAdmin):
-#     list_display = Attr(Envio_Email)
-#     list_display_links = Attr(Envio_Email)
+

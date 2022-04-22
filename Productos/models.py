@@ -52,7 +52,6 @@ class Galeria(models.Model,ResizeImageMixin):
     producto=models.ForeignKey(Catalogo,on_delete=models.CASCADE)
     imagen=models.ImageField(upload_to='producto/galeria')
 
-
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         gale = None

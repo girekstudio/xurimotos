@@ -5,7 +5,7 @@ from openpyxl import Workbook
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Font
 from simple_search import search_filter
-from Home.models import Marca_Xurimotos, Editable_Xurimotos, Destacados_Xurimotos, Producto_carrusel, Slider, Banner
+from Home.models import Marca_Xurimotos, Editable_Xurimotos, Destacados_Xurimotos, Producto_carrusel, Slider, Banner, Menu_Destacados_Xurimotos
 from Productos.models import Catalogo, Categoria, Galeria
 import os
 import datetime
@@ -67,6 +67,7 @@ def producto_view(request):
         'categorias':Categoria.objects.all().order_by('nombre'),
         'galeria': Galeria.objects.all(),
         'editable': Editable_Xurimotos.objects.all().first(),
+        'menu_destacado': Menu_Destacados_Xurimotos.objects.first(),
         'destacado': Destacados_Xurimotos.objects.all().first(),
         'banner': Banner.objects.all(),
 
@@ -102,11 +103,9 @@ def catalogo_view(request):
         'categorias':Categoria.objects.all().order_by('nombre'),
         'galeria': Galeria.objects.all(),
         'editable': Editable_Xurimotos.objects.all().first(),
-        'destacado': Destacados_Xurimotos.objects.all().first(),
+        # 'destacado': Destacados_Xurimotos.objects.all().first(),
 
     }
-    if request.GET.get('modo')=='Lista':
-        return render(request, 'new/catalogo-lista.html', contexto)
     return render(request, 'new/catalogo.html',contexto)
 
 
@@ -118,6 +117,6 @@ def detalles_producto(request):
         'editable': Editable_Xurimotos.objects.all().first(),
         'marca_xuri': Marca_Xurimotos.objects.first(),
         'producto':prod,
-        'relacionados':todos.filter(nombre_producto__icontains=pr[0]+ " "+ pr[1]).order_by('-id')
+        'relacionados':todos.filter(categoria_id=prod.categoria_id)
     }
     return render(request, 'new/product.html', contexto)
