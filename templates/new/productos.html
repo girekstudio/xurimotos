@@ -66,7 +66,8 @@
                     <li class="koho-semibold d-none  d-sm-none  d-md-block">
                         {% if menu_destacado.menu_dest_titulo_01 %}
                             <a href="/catalogo/?q={{ menu_destacado.menu_dest_titulo_01 }}">
-                                <button type="koho-semibold button" class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ menu_destacado.menu_dest_titulo_01 }}</button>&nbsp;</a>
+                                <button type="koho-semibold button"
+                                        class="koho-semibold btn btn-outline btn-quaternary mb-2">{{ menu_destacado.menu_dest_titulo_01 }}</button>&nbsp;</a>
                         {% else %}
                         {% endif %}
                     </li>
@@ -152,14 +153,108 @@
             </nav>
         </div>
 
-        <section class="section section-no-border   m-0" style="background-color:#ffffff!important; ">
+        <section class="section section-no-border   m-0" style="background-color:#F6F6F6 ">
+            <div class="container">
+                <div class="row align-items-center pt-4 ">
+                    <div class="col-md-3 mb-3 mb-md-0  text-center y text-md-left">
+                        <h2 class="graphik-bold  line-height-1 font-weight-bold text-7 text-sm-7 text-md-9 text-lg-9 text-xl-9mb-0 " style="margin-top: -10px; color:{{ editable.titulo_codigo_color_negro}}!important;">PRODUCTOS NUEVOS </h2>
+                        <br>
+                        <p class="graphik-regular" style="color:{{ editable.parrafo_codigo_color_negro }}!important; line-height: 20px ;letter-spacing: 0.1px!important">Catálogo  XURI 2022 contiene la ficha detallada sobre lo que puedes necesitar.</p>
+                        <a href="/contacto/">
+                            <button type="button" class=" graphik-bold btn btn-warning  text-color-quaternary mb-2"> <strong>SOLICITAR CATÁLOGO</strong></button>
+                        </a>
+                    </div>
+
+
+                    <!-- Vista nuevos product pc -->
+                    <div class="d-none d-sm-block col-md-8 pl-md-5  align-items-center justify-content-center">
+                        <div class="row products product-thumb-info-list">
+                            <div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
+                                 data-plugin-options="{'loop': true, 'autoplay': false, 'items': 3, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+                                {% for producto in productos %}
+                                    <div class=" products product-thumb-info-list isotope-item logos y   ">
+                                        <div class="portfolio-item border rounded shadow-sm  "
+                                             style=" alignment: left!important; margin-bottom: 10px!important;box-shadow:#0cc485 ">
+                                            <a class="" href="/product/?id={{ producto.id }}">
+                                                <span class="thumb-info thumb-info-lighten border-radius-0">
+                                                    <span class="thumb-info-wrapper border-radius-0">
+                                                        {% if producto.foto %}
+                                                            <img style="border-radius: 20px !important;" alt=""
+                                                                 class="img-fluid border-radius-0"
+                                                                 src="/media/{{ producto.foto }}" width="100%">
+                                                        {% else %}
+                                                            <img style="border-radius: 20px !important;" alt=""
+                                                                 class="img-fluid " src="/static/img/products/xuri.jpg">
+                                                            <br><br>
+                                                        {% endif %}
+                                                        <br><br><br>
+                                                    </span>
+                                                    <span class="thumb-info-title  text-4 text-sm-3 text-md-1 text-lg-2 text-xl-2 "  style=" min-font-size:10px!important;max-font-size: 12px!important; background: transparent!important;color: #1C1C1C !important; ; margin-bottom: -40px!important; text-align: left!important; padding-left: 15px!important;padding-right: 5px!important; ">
+                                                        <span class="thumb-info-inner"
+                                                              style="letter-spacing: 0.1px!important;line-height: 13px!important;">{{ producto.nombre_producto|truncatechars:34 }}</span>
+                                                         <br>
+                                                    </span>
+
+                                                </span>
+
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vista fin nuevos product  pc -->
+
+                    <!-- Vista nuevos product mobil -->
+                    <div class="d-block d-sm-none col-md-8 pl-md-5  align-items-center justify-content-center">
+                        <div class="products row">
+                            <div class="owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
+                                 data-plugin-options="{'loop': true, 'autoplay': true, 'items': 1, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
+                                {% for producto in catalogo %}
+                                    <div class=" products product-thumb-info-list isotope-item logos y   ">
+                                        <div class="portfolio-item border rounded shadow-sm  "
+                                             style=" alignment: left!important; margin-bottom: 10px!important;box-shadow:#0cc485 ">
+                                            <a class="" href="/product/?id={{ producto.id }}">
+                                                <span class="thumb-info thumb-info-lighten border-radius-0">
+                                                    <span class="thumb-info-wrapper border-radius-0">
+                                                        {% if producto.foto %}
+                                                            <img style="border-radius: 20px !important;" alt=""
+                                                                 class="img-fluid border-radius-0"
+                                                                 src="/media/{{ producto.foto }}" width="100%">
+                                                        {% else %}
+                                                            <img style="border-radius: 20px !important;" alt=""
+                                                                 class="img-fluid " src="/static/img/products/xuri.jpg">
+                                                            <br><br>
+                                                        {% endif %}
+                                                        <br><br><br>
+                                                    </span>
+                                                    <span class="thumb-info-title text-4 text-sm-4 text-md-4 text-lg-4 text-xl-4"  style=" background: transparent!important;color: #1C1C1C !important; ; margin-bottom: -40px!important; text-align: left!important; padding-left: 10px!important;margin-left: 15px!important;">
+                                                        <span class="thumb-info-inner  "
+                                                              style="letter-spacing: 0.1px!important;line-height: 13px!important;">{{ producto.nombre_producto|truncatechars:40 }}</span>
+                                                         <br>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vista fin nuevos product  mobil -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-no-border m-0" style="background-color:#ffffff!important; ">
             <div class="container mb-3  " style="height:100%!important;width: 100% !important;">
                 <div class="row align-items-start text-start "
                      style="display: flex;align-items: center;justify-content: center">
-
-
                     <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
-                        <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'autoplay': true, 'autoplayTimeout': 3000,'dots': false}">
+                        <div class="owl-carousel owl-theme"
+                             data-plugin-options="{'items': 1, 'autoplay': true,'dots': false, 'autoplayTimeout': 3000}">
                             {% for banne in banner %}
                                 {% if banne.activo %}
                                     <img alt="" class="img-fluid" src="/media/{{ banne.imagen_banner }}"
@@ -168,7 +263,6 @@
                             {% endfor %}
                         </div>
                     </div>
-
                     <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 align-items-center justify-content-center  "
                          style=";align-items: center;justify-content: center; padding-right:15px!important;padding-left: 15px!important;background-color:#F6F6F6!important; border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
                         <br>
@@ -263,10 +357,6 @@
 
 
 
-
-
-
-
     <!-- Vista   pc  comprar por categoria -->
     <div class="container d-none d-sm-none d-md-block">
         <section class="section" style="padding: 0px !important; border-top:0px !important;">
@@ -276,12 +366,12 @@
                     <div class="row text-center y text-md-left " style="margin: 10px">
                         <a href="/catalogo/" class="text-decoration-none">
                             <div class="icon-box">
-                                <h3 class=" koho-semibold top line-height-1 text-4 text-color-primary mb-0"
-                                    style="margin-bottom: 10px!important; vert-align: top!important; letter-spacing: 4px">
+                                <h3 class=" koho-semibold top line-height-1 text-4  mb-0"
+                                    style="margin-bottom: 10px!important; vert-align: top!important; letter-spacing: 4px; color:{{ editable.titulo_codigo_color_amarillo }}!important;">
                                     COMPRA POR
                                     CATEGORÍAS</h3>
-                                <h3 class="graphik-bold text-8  text-color-black mb-0 "
-                                    style="line-height: 120%;letter-spacing: 2px"><strong> DESTACADAS DEL
+                                <h3 class="graphik-bold text-6 text-sm-4 text-md-6 text-lg-8 text-xl-8   mb-0 "
+                                    style="line-height: 120%;letter-spacing: 2px; color:{{ editable.titulo_codigo_color_negro}}!important;"><strong> DESTACADAS DEL
                                     MES</strong></h3>
                             </div>
                         </a>
@@ -291,12 +381,13 @@
                 <div class="col-6 col-md-4  graphik-bold text-center d-flex align-items-center justify-content-center py-4 "
                      style="background-color: #FECF37; border-top-left-radius:10px 10px!important">
                     <a href="/catalogo/?q={{ destacado.dest_link_01 }}" class="text-decoration-none">
-                        <section class="graphik-bold call-to-action  ">
+                        <section class="graphik-bold call-to-action  " style="padding: 0px!important;">
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                <p class="graphik-bold  text-sm-4 text-md-5 text-lg-6 text-xl-6 mb-0 text-color-black"
                                    style="text-align: left; ">
-                                    <strong>{{ destacado.dest_titulo_01 }} </strong></p>
+                                    <strong>{{ destacado.dest_titulo_01 }} </strong>
+                                </p>
                             </div>
                             <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
                                  style="padding: 0px!important; margin: 0px !important;">
@@ -317,10 +408,10 @@
                 <div class="col-6 col-md-4 text-center d-flex align-items-center justify-content-center py-4"
                      style="background-color: #F6F6F6; border-top-right-radius:10px 10px!important">
                     <a href="/catalogo/?q={{ destacado.dest_link_02 }}" class="text-decoration-none">
-                        <section class="graphik-bold call-to-action  ">
+                        <section class="graphik-bold call-to-action  " style="padding: 0px!important;">
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                <p class="graphik-bold text-sm-4 text-md-5 text-lg-6 text-xl-6 mb-0 text-color-black"
                                    style="text-align: left; ">
                                     <strong>{{ destacado.dest_titulo_02 }} </strong></p>
                             </div>
@@ -330,23 +421,20 @@
                             </div>
                         </section>
                         <span class="thumb-info thumb-info-hide-wrapper-bg"
-                              style="background-color:  transparent !important;">
+                              style="background-color: transparent !important;">
                             <span class="thumb-info-wrapper">
-                                <img src="/media/{{ destacado.dest_imagen_02 }} " class="img-fluid"
-                                     alt="">
-
+                                <img src="/media/{{ destacado.dest_imagen_02 }} " class="img-fluid" alt="">
                             </span>
-
                         </span>
                     </a>
                 </div>
                 <div class="  col-6 col-md-4 text-center d-flex align-items-center justify-content-center py-4"
                      style="background-color: #FECF37 ; border-bottom-left-radius:10px 10px!important; border-top-left-radius:10px 10px!important">
                     <a href="/catalogo/?q={{ destacado.dest_link_03 }}" class="text-decoration-none">
-                        <section class="graphik-bold call-to-action">
+                        <section class="graphik-bold call-to-action" style="padding: 0px!important;">
                             <div class="graphik-bold col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class="graphik-bold text-6 mb-0 text-color-black"
+                                <p class="graphik-bold text-sm-4 text-md-5 text-lg-6 text-xl-6 mb-0 text-color-black"
                                    style="text-align: left; ">
                                     <strong>{{ destacado.dest_titulo_03 }} </strong></p>
                             </div>
@@ -356,7 +444,7 @@
                             </div>
                         </section>
                         <span class="thumb-info thumb-info-hide-wrapper-bg"
-                              style="background-color:  transparent !important;">
+                              style="background-color: transparent !important;">
                             <span class="thumb-info-wrapper">
                                 <img src="/media/{{ destacado.dest_imagen_03 }} " class="img-fluid"
                                      alt="">
@@ -370,10 +458,10 @@
                 <div class="col-6 col-md-4 text-center graphik-bold d-flex align-items-center justify-content-center py-4"
                      style="background-color: #F6F6F6">
                     <a href="/catalogo/?q={{ destacado.dest_link_04 }}" class="text-decoration-none">
-                        <section class="graphik-bold call-to-action  ">
+                        <section class="graphik-bold call-to-action  " style="padding: 0px!important;">
                             <div class="graphik-bold col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class=" graphik-bold text-6 mb-0 text-color-black"
+                                <p class=" graphik-bold text-sm-4 text-md-5 text-lg-6 text-xl-6 mb-0 text-color-black"
                                    style="text-align: left; ">
                                     <strong>{{ destacado.dest_titulo_04 }} </strong></p>
                             </div>
@@ -383,7 +471,7 @@
                             </div>
                         </section>
                         <span class="thumb-info thumb-info-hide-wrapper-bg"
-                              style="background-color:  transparent !important;">
+                              style="background-color: transparent !important;">
                             <span class="thumb-info-wrapper">
                                 <img src="/media/{{ destacado.dest_imagen_04 }} " class="img-fluid"
                                      alt="">
@@ -397,10 +485,10 @@
                 <div class="col-6 col-md-4 text-left d-flex align-items-center justify-content-center py-4"
                      style="background-color: #FECF37; border-bottom-right-radius:10px 10px!important;">
                     <a href="/catalogo/?q={{ destacado.dest_link_05 }}" class="text-decoration-none">
-                        <section class="graphik-bold call-to-action  ">
+                        <section class="graphik-bold call-to-action  " style="padding: 0px!important;">
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class="graphik-bold  text-6 mb-0 text-color-black"
+                                <p class="graphik-bold text-sm-4 text-md-5 text-lg-6 text-xl-6 mb-0 text-color-black"
                                    style="text-align: left; ">
                                     <strong>{{ destacado.dest_titulo_05 }} </strong></p>
                             </div>
@@ -410,7 +498,7 @@
                             </div>
                         </section>
                         <span class="thumb-info thumb-info-hide-wrapper-bg"
-                              style="background-color:  transparent !important;">
+                              style="background-color: transparent! important;">
                             <span class="thumb-info-wrapper">
                                 <img src="/media/{{ destacado.dest_imagen_05 }} " class="img-fluid"
                                      alt="">
@@ -430,11 +518,11 @@
         <div class="row text-center d-flex align-items-center justify-content-center ">
             <a href="/catalogo/" class="text-decoration-none">
                 <div class="icon-box">
-                    <h2 class=" koho-semibold top line-height-1 text-5 text-color-primary mb-0"
-                        style="margin-bottom: 10px!important; vert-align: top!important; letter-spacing: 4px">COMPRA POR
+                    <h2 class=" koho-semibold top line-height-1 text-5 mb-0"
+                        style="margin-bottom: 10px!important; vert-align: top!important; letter-spacing: 4px;color:{{ editable.titulo_codigo_color_amarillo }}!important;">COMPRA POR
                         CATEGORÍAS</h2>
-                    <h4 class="graphik-bold text-8  text-color-black mb-0 "
-                        style="line-height: 120%;letter-spacing: 2px"><strong> DESTACADAS DEL
+                    <h4 class="graphik-bold text-8   mb-0 "
+                        style="line-height: 120%;letter-spacing: 2px; color:{{ editable.titulo_codigo_color_negro}}!important;"><strong> DESTACADAS DEL
                         MES</strong></h4>
                 </div>
             </a>
@@ -451,8 +539,7 @@
                         <section class="call-to-action  " style="padding: 5px!important;">
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class="graphik-bold text-6 mb-0 text-color-black"
-                                   style="text-align: left; ">
+                                <p class="graphik-bold text-6 mb-0 text-color-black" style="text-align: left; ">
                                     <strong>{{ destacado.dest_titulo_01 }} </strong></p>
                             </div>
                             <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
@@ -466,6 +553,7 @@
                             <span class="thumb-info-wrapper">
                                 <img src="/media/{{ destacado.dest_imagen_01 }} " class="img-fluid"
                                      alt="">
+
                             </span>
                         </span>
                     </a>
@@ -473,12 +561,12 @@
                 <div class="col-12 col-sm-12 graphik-bold text-center d-flex align-items-center justify-content-center py-4"
                      style="background-color: #F6F6F6;  border-radius:10px 10px!important">
                     <a href="/catalogo/?q={{ destacado.dest_link_02 }}" class="text-decoration-none">
-                        <section class="call-to-action  ">
+                        <section class="call-to-action " style="padding: 5px!important;">
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class="graphik-bold text-6 mb-0 text-color-black"
-                                   style="text-align: left; ">
-                                    <strong>{{ destacado.dest_titulo_02 }} </strong></p>
+                                <p class="graphik-bold text-6 mb-0 text-color-black" style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_02 }} </strong>
+                                </p>
                             </div>
                             <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
                                  style="padding: 0px!important; margin: 0px !important;">
@@ -497,12 +585,12 @@
                 <div class=" col-12 col-sm-12 graphik-bold text-center d-flex align-items-center justify-content-center py-4"
                      style="background-color: #FECF37 ;  border-radius:10px 10px!important">
                     <a href="/catalogo/?q={{ destacado.dest_link_03 }}" class="text-decoration-none">
-                        <section class="call-to-action">
+                        <section class="call-to-action" style="padding: 5px!important;">
                             <div class=" graphik-bold col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
-                                <p class="graphik-bold text-6 mb-0 text-color-black"
-                                   style="text-align: left; ">
-                                    <strong>{{ destacado.dest_titulo_03 }} </strong></p>
+                                <p class="graphik-bold text-6 mb-0 text-color-black" style="text-align: left; ">
+                                    <strong>{{ destacado.dest_titulo_03 }} </strong>
+                                </p>
                             </div>
                             <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"
                                  style="padding: 0px!important; margin: 0px !important;">
@@ -522,7 +610,7 @@
                 <div class="col-12 col-sm-12  graphik-bold text-center d-flex align-items-center justify-content-center py-4"
                      style="background-color: #F6F6F6; border-radius:10px 10px!important">
                     <a href="/catalogo/?q={{ destacado.dest_link_04 }}" class="text-decoration-none">
-                        <section class="call-to-action  ">
+                        <section class="call-to-action  " style="padding: 5px!important;">
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
                                 <p class="graphik-bold text-6 mb-0 text-color-black"
@@ -547,7 +635,7 @@
                 <div class="col-12 col-sm-12 graphik-bold text-left d-flex align-items-center justify-content-center py-4"
                      style="background-color: #FECF37;  border-radius:10px 10px!important">
                     <a href="/catalogo/?q={{ destacado.dest_link_05 }}" class="text-decoration-none">
-                        <section class="call-to-action  ">
+                        <section class="call-to-action  " style="padding: 5px!important;">
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9"
                                  style="padding: 0px!important; margin: 0px !important;">
                                 <p class="graphik-bold  text-6 mb-0 text-color-black"
@@ -639,3 +727,90 @@
 
 
 {% endblock %}
+
+
+
+
+
+<style>
+    .call-to-action {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        padding: 2px;
+        clear: both;
+    }
+</style>
+
+<style>
+    .thumb-info  {
+        transition: all 0.3s;
+        background: transparent !important;
+        color: #fcbf00 !important;
+    }
+</style>
+
+<style>
+    .thumb-info-title {
+        transition: all 0.3s;
+        background: transparent !important;
+        color: #1C1C1C !important;
+        font-weight: 600;
+        left: 0;
+        letter-spacing: -.05em;
+        position: absolute;
+        z-index: 2;
+        max-width: 90%;
+        font-size: 17px;
+        padding: 13px 21px 2px;
+        bottom: 13%;
+    }
+</style>
+
+
+<style>
+    .thumb-info .thumb-info-title {
+        transition: all 0.3s;
+        background: transparent !important;
+        color: #1C1C1C !important;
+        font-weight: 600;
+        left: 0;
+        letter-spacing: -.05em;
+        position: absolute;
+        z-index: 2;
+        max-width: 90%;
+        font-size: 17px;
+        padding: 13px 21px 2px;
+        bottom: 13%;
+    }
+</style>
+
+<style>
+    .thumb-info-lighten {
+        background: transparent !important;
+    }
+</style>
+
+<style>
+    .thumb-info.thumb-info-lighten {
+        background: #ffffff !important;
+
+
+    }
+</style>
+
+<style>
+    .thumb-info-wrapper:after {
+        border-radius: 5px !important;
+
+
+    }
+</style>
+
+
+
+
+
+
+
+

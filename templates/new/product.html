@@ -143,35 +143,34 @@
                             <div class="graphik-medium owl-carousel owl-theme nav-style-1 nav-outside nav-outside nav-dark mb-0"
                                  data-plugin-options="{'loop': false, 'autoplay': true, 'items': 4, 'nav': true, 'dots': false, 'margin': 20, 'autoplayHoverPause': true, 'autoHeight': true, 'stagePadding': '75', 'navVerticalOffset': '50px'}">
                                 {% for relacionado in relacionados %}
-                                    <div class="product mb-0 btn btn-light">
-                                        <div class="product-thumb-info border-0 mb-3" style="border-radius: 20px">
-                                            <a href="/product/?id={{ relacionado.id }}">
-                                                <div class="product-thumb-info-image" style="background:#ffffff !important;">
-                                                    {% if relacionado.foto %}
-                                                        <img alt="" class="img-fluid"
-                                                             src="/media/{{ relacionado.foto }}">
-                                                    {% else %}
-                                                        <img alt="" class="img-fluid"
-                                                             src="/static/img/products/xuri.jpg">
-                                                    {% endif %}
-                                                </div>
+
+                                    <div class=" products product-thumb-info-list isotope-item logos y   ">
+                                        <div class="portfolio-item border rounded shadow-sm  "
+                                             style=" alignment: left!important; margin-bottom: 10px!important;box-shadow:#0cc485 ">
+                                            <a class="" href="/product/?id={{ relacionado.id }}">
+                                                <span class="thumb-info thumb-info-lighten border-radius-0">
+                                                    <span class="thumb-info-wrapper border-radius-0">
+                                                        {% if relacionado.foto %}
+                                                            <img style="border-radius: 20px !important;" alt=""
+                                                                 class="img-fluid border-radius-0"
+                                                                 src="/media/{{ relacionado.foto }}" width="100%">
+                                                        {% else %}
+                                                            <img style="border-radius: 20px !important;" alt=""
+                                                                 class="img-fluid " src="/static/img/products/xuri.jpg">
+                                                            <br><br>
+                                                        {% endif %}
+                                                        <br><br><br>
+                                                    </span>
+                                                    <span class="thumb-info-title"  style=" background: transparent!important;color: #1C1C1C !important; ; margin-bottom: -40px!important; text-align: center! important; ">
+                                                        <span class="thumb-info-inner text-1 text-sm-1 text-md-1 text-lg-2 text-xl-2 " style=" letter-spacing: 0.1px!important;line-height: 13px!important;">{{ relacionado.nombre_producto|truncatechars:25 }}</span>
+                                                         <br>
+                                                    </span>
+
+                                                </span>
+
                                             </a>
+
                                         </div>
-                                        <div style="text-align: left!important;">
-                                            <div >
-{#                                                <a href="#"  class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">{{ relacionado.categoria }}</a>#}
-                                                <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-                                                    <a href="/product/?id={{ relacionado.id }}" class="text-color-dark text-color-hover-primary">{{ relacionado.nombre_producto }}</a>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <div title="Rated 5 out of 5">
-                                            <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                                        </div>
-                                        <p class="price text-5 mb-3">
-                                            <span class="sale text-color-dark font-weight-semi-bold"></span>
-                                            <span class="amount"></span>
-                                        </p>
                                     </div>
                                 {% endfor %}
                             </div>
