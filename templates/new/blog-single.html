@@ -56,21 +56,57 @@
                                 <article class="post post-large blog-single-post border-0 m-0 p-0">
 
                                     <div class="post-image ml-0"
-                                         style="align-content: center!important;;align-items: center!important;">
-                                        <a href="">
-                                            <img src="/media/{{ blogg.imagen }}"
-                                                 class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
-                                                 alt="" height="500px" width="100%"/>
-                                        </a>
+                                         style="align-content: center!important;align-items: center!important;">
+
                                         {% if blogg.tipo_archivo == 'imagen' %}
-                                            <img class="img-responsive" src="/media/{{ blogg.tipo_imagen }}" alt="">
+                                            <img class="img-responsive" src="/media/{{ blogg.tipo_imagen }}" alt="" height="500px" width="100%">
                                         {% else %}
-                                            <iframe width="100%" height="400"
-                                                    src="https://www.youtube.com/embed/{{ blogg.tipo_video_link }}?showinfo=0&rel=0&theme=light&modestbranding=1&frameborder=0"
+                                        {% endif %}
+
+                                        {% if blogg.tipo_archivo == 'video' %}
+                                            <div class="position-relative">
+                                                <div class="embed-responsive embed-responsive-4by3">
+                                                    <video id="presentation2" class="float-left" height="200px!important" width="100%"  loop controls
+                                                           preload="metadata">
+                                                        <source src="/media/{{ blogg.tipo_video }}" type="video/webm">
+                                                        <source src="/media/{{ blogg.tipo_video }}" type="video/mp4">
+                                                    </video>
+                                                    <a href="#"
+                                                       class="position-absolute top-50pct left-50pct transform3dxy-n50 bg-light rounded-circle d-flex align-items-center justify-content-center text-decoration-none bg-color-hover-primary text-color-hover-light play-button-lg pulseAnim pulseAnimAnimated"
+                                                       data-trigger-play-video="#presentation2" data-trigger-play-video-remove="yes">
+                                                        <i class="fas fa-play text-5"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                        {% endif %}
+
+                                        {% if blogg.tipo_archivo == 'youtube' %}
+                                             <iframe width="100%"  style="height:50px !important;"
+                                                    src="https://www.youtube.com/embed/{{ blogg.link_youtube }}?showinfo=0&rel=0&theme=light&modestbranding=1&frameborder=0"
                                                     frameborder="0"
                                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                     allowfullscreen>
                                             </iframe>
+                                        {% endif %}
+
+                                        {% if blogg.tipo_archivo == 'galeria'%}
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-112 col-xl-12">
+                                                <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'autoplay': true,'dots': false, 'autoplayTimeout': 3000}">
+                                                    {% if blogg.imagen_galeria_1 %}
+                                                        <img alt="" class="img-fluid" src="/media/{{ blogg.imagen_galeria_1 }}" style="height:100%;border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
+                                                    {% endif %}
+
+                                                    {% if blogg.imagen_galeria_1 %}
+                                                        <img alt="" class="img-fluid" src="/media/{{ blogg.imagen_galeria_2 }}" style="height:100%;border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
+                                                    {% endif %}
+
+                                                    {% if blogg.imagen_galeria_1 %}
+                                                        <img alt="" class="img-fluid" src="/media/{{ blogg.imagen_galeria_3 }}" style="height:100%;border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% else %}
                                         {% endif %}
                                     </div>
 

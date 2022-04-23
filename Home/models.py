@@ -78,6 +78,10 @@ class Editable_Xurimotos(models.Model):
     vision_sub = models.CharField(max_length=100, null=True, blank=True, help_text='Subtítulo 1 - Secc-Empresa P1')
     vision_titulo = models.CharField(max_length=100, null=True, blank=True, help_text='Título 1 - Secc-Empresa P1')
     vision_detalle = models.CharField(max_length=500, null=True, blank=True, help_text='Detalle 1 - Secc-Empresa P1')
+    titulo_codigo_color_amarillo = models.CharField(max_length=7, null=True, blank=True, help_text='Código de color para títulos amarillos en fondos claros')
+    titulo_codigo_color_negro = models.CharField(max_length=7, null=True, blank=True, help_text='Código de color para títulos amarillos en fondos claros')
+    parrafo_codigo_color_negro = models.CharField(max_length=7, null=True, blank=True, help_text='Código de color para párrafos negros en fondos claros')
+
 
     class Meta:
         verbose_name_plural = "2. Editable Xurimotos"
@@ -209,9 +213,13 @@ class Distribuidores_Xurimotos(models.Model):
 
 
 class Blogs(models.Model):
-    tipo_archivo = models.CharField(max_length=20, default='imagen', choices=(("imagen", "imagen"), ("video", "video")))
+    tipo_archivo = models.CharField(max_length=20, default='vacio', choices=(("vacio", "vacio"),("imagen", "imagen"), ("video", "video"), ("youtube", "youtube"), ("galeria", "galeria")))
     tipo_imagen = models.FileField(upload_to='blog', null=True, blank=True, help_text='imagen de 1280*500')
-    tipo_video_link = models.CharField(max_length=120, null=True, blank=True)
+    tipo_video = models.FileField(upload_to='blog', null=True, blank=True, help_text='video en mp4')
+    link_youtube = models.CharField(max_length=120, null=True, blank=True, help_text='Pegar el código del video')
+    imagen_galeria_1 = models.FileField(upload_to='blog', null=True, blank=True, help_text='imagen galeria de 1280*500')
+    imagen_galeria_2 = models.FileField(upload_to='blog', null=True, blank=True, help_text='imagen galeria de 1280*500')
+    imagen_galeria_3 = models.FileField(upload_to='blog', null=True, blank=True, help_text='imagen galeria de 1280*500')
     fecha = models.DateField()
     titulo = models.CharField(max_length=200, null=True, blank=True)
     articulo = models.TextField(max_length=10000, null=True, blank=True)
