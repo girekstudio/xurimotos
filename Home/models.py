@@ -81,7 +81,7 @@ class Editable_Xurimotos(models.Model):
     titulo_codigo_color_amarillo = models.CharField(max_length=7, null=True, blank=True, help_text='Código de color para títulos amarillos en fondos claros')
     titulo_codigo_color_negro = models.CharField(max_length=7, null=True, blank=True, help_text='Código de color para títulos amarillos en fondos claros')
     parrafo_codigo_color_negro = models.CharField(max_length=7, null=True, blank=True, help_text='Código de color para párrafos negros en fondos claros')
-
+    codigo_color_RGBA_sombreado = models.CharField(max_length=20, null=True, blank=True, help_text='Código de color para sombreado de productos')
 
     class Meta:
         verbose_name_plural = "2. Editable Xurimotos"
