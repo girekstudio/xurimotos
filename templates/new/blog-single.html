@@ -58,7 +58,7 @@
                                     <div class="post-image ml-0" style="align-content: center!important;align-items: center!important;">
 
                                         {% if blogg.tipo_archivo == 'imagen' %}
-                                            <img class="img-responsive" src="/media/{{ blogg.tipo_imagen }}" alt="" height="500px" width="100%">
+                                            <img class="img-responsive" src="/media/{{ blogg.tipo_imagen }}" alt="" style="height:100% !important; width:100%;border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
                                         {% else %}
                                         {% endif %}
 
@@ -81,17 +81,21 @@
                                         {% endif %}
 
                                         {% if blogg.tipo_archivo == 'youtube' %}
-                                             <iframe width="100%"  style="height:50px !important;"
-                                                    src="https://www.youtube.com/embed/{{ blogg.link_youtube }}?showinfo=0&rel=0&theme=light&modestbranding=1&frameborder=0"
-                                                    frameborder="0"
-                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen>
-                                            </iframe>
+                                            <div style="text-align: center">
+                                                <iframe width="560" height="315"
+                                                        src="https://www.youtube.com/embed/{{ blogg.link_youtube }}?showinfo=0&rel=0&theme=light&modestbranding=1&frameborder=0"
+                                                        frameborder="0"
+                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowfullscreen>
+                                                </iframe>
+
+                                            </div>
+
                                         {% endif %}
 
                                         {% if blogg.tipo_archivo == 'galeria'%}
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-112 col-xl-12">
-                                                <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'autoplay': true,'dots': false, 'autoplayTimeout': 3000}">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-112 col-xl-12" style="margin: 0px!important;padding: 0px!important;">
+                                                <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'autoplay': false,'dots': false, 'autoplayTimeout': 3000}">
                                                     {% if blogg.imagen_galeria_1 %}
                                                         <img alt="" class="img-fluid" src="/media/{{ blogg.imagen_galeria_1 }}" style="height:100% !important; width:100%; border-top-right-radius:10px 10px!important;border-top-left-radius:10px 10px!important;border-bottom-right-radius:10px 10px!important;border-bottom-left-radius:10px 10px!important;">
                                                     {% endif %}
